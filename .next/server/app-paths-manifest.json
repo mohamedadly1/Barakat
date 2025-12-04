@@ -1,0 +1,9 @@
+{
+  "/api/send-hearing-test-results/route": "app/api/send-hearing-test-results/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/products/hearing-aid-brands/rexton/bi-core-rugged/page": "app/products/hearing-aid-brands/rexton/bi-core-rugged/page.js",
+  "/products/hearing-aid-brands/rexton/bi-core-ric/page": "app/products/hearing-aid-brands/rexton/bi-core-ric/page.js",
+  "/products/hearing-aid-technology/integrated-xperience/page": "app/products/hearing-aid-technology/integrated-xperience/page.js",
+  "/page": "app/page.js",
+  "/hearing-test/page": "app/hearing-test/page.js"
+}
