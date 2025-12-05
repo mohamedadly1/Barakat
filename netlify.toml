@@ -1,9 +1,8 @@
 [build]
   command = "npm run build"
-  # هذا يحدد أن Netlify يجب أن تبحث عن المخرجات في مجلد "out"
+  # تأكد أن هذا هو 'out'
   publish = "out"  
 
-# هذا التوجيه (الذي عملنا عليه سابقاً) ضروري لحل مشكلة 404
 [[redirects]]
   from = "/*"
   to = "/index.html"
