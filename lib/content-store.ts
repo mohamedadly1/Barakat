@@ -80,12 +80,6 @@ export interface StoredProduct {
   price: string
   features: string[]
   image: string
-  specifications?: {
-    batteryLife?: string
-    connectivity?: string
-    waterResistance?: string
-    colors?: string[]
-  }
 }
 
 const PRODUCTS_STORAGE_KEY = "website_products"

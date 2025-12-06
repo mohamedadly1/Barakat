@@ -20,18 +20,20 @@ export function Footer({ content, isAdmin, onEdit }: FooterProps) {
                 <span className="text-primary-foreground font-bold">H</span>
               </div>
               <EditableText
-                contentKey="footer.brandName"
-                defaultValue={content.brandName}
-                as="span"
+                value={content.brandName}
+                onChange={(value) => onEdit?.("brandName", value)}
+                isAdmin={isAdmin}
                 className="font-bold text-lg"
+                placeholder="Brand name"
               />
             </div>
             <EditableText
-              contentKey="footer.tagline"
-              defaultValue={content.tagline}
-              as="p"
+              value={content.tagline}
+              onChange={(value) => onEdit?.("tagline", value)}
+              isAdmin={isAdmin}
               className="text-sm text-muted-foreground"
               multiline
+              placeholder="Tagline"
             />
           </div>
 
@@ -116,10 +118,11 @@ export function Footer({ content, isAdmin, onEdit }: FooterProps) {
 
         <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
           <EditableText
-            contentKey="footer.copyright"
-            defaultValue={content.copyright}
-            as="p"
+            value={content.copyright}
+            onChange={(value) => onEdit?.("copyright", value)}
+            isAdmin={isAdmin}
             className="text-sm text-muted-foreground"
+            placeholder="Copyright text"
           />
         </div>
       </div>

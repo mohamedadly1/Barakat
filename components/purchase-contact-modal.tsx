@@ -109,16 +109,19 @@ export function PurchaseContactModal({
         <DialogHeader>
           <DialogTitle className="text-2xl">
             <EditableText
-              contentKey={`purchaseModal.${product.id}.title`}
-              defaultValue={content.title}
-              as="span"
+              value={content.title}
+              onChange={(value) => onContentChange?.("title", value)}
+              isEditable={isAdmin}
             />
           </DialogTitle>
           <p className="text-sm text-muted-foreground">
             <EditableText
-              contentKey={`purchaseModal.${product.id}.subtitle`}
-              defaultValue={`Interested in ${product.name}? ${content.subtitle}`}
-              as="span"
+              value={`Interested in ${product.name}? ${content.subtitle}`}
+              onChange={(value) => {
+                const newSubtitle = value.replace(`Interested in ${product.name}? `, "")
+                onContentChange?.("subtitle", newSubtitle)
+              }}
+              isEditable={isAdmin}
             />
           </p>
         </DialogHeader>
@@ -127,9 +130,9 @@ export function PurchaseContactModal({
           <div>
             <label className="text-sm font-medium mb-2 block">
               <EditableText
-                contentKey="purchaseModal.nameLabel"
-                defaultValue={content.nameLabel}
-                as="span"
+                value={content.nameLabel}
+                onChange={(value) => onContentChange?.("nameLabel", value)}
+                isEditable={isAdmin}
               />{" "}
               <span className="text-destructive">*</span>
             </label>
@@ -144,9 +147,9 @@ export function PurchaseContactModal({
           <div>
             <label className="text-sm font-medium mb-2 block">
               <EditableText
-                contentKey="purchaseModal.emailLabel"
-                defaultValue={content.emailLabel}
-                as="span"
+                value={content.emailLabel}
+                onChange={(value) => onContentChange?.("emailLabel", value)}
+                isEditable={isAdmin}
               />{" "}
               <span className="text-destructive">*</span>
             </label>
@@ -162,9 +165,9 @@ export function PurchaseContactModal({
           <div>
             <label className="text-sm font-medium mb-2 block">
               <EditableText
-                contentKey="purchaseModal.phoneLabel"
-                defaultValue={content.phoneLabel}
-                as="span"
+                value={content.phoneLabel}
+                onChange={(value) => onContentChange?.("phoneLabel", value)}
+                isEditable={isAdmin}
               />{" "}
               <span className="text-destructive">*</span>
             </label>
@@ -180,9 +183,9 @@ export function PurchaseContactModal({
           <div>
             <label className="text-sm font-medium mb-2 block">
               <EditableText
-                contentKey="purchaseModal.messageLabel"
-                defaultValue={content.messageLabel}
-                as="span"
+                value={content.messageLabel}
+                onChange={(value) => onContentChange?.("messageLabel", value)}
+                isEditable={isAdmin}
               />
             </label>
             <Textarea
@@ -196,9 +199,9 @@ export function PurchaseContactModal({
           <div className="flex gap-3 pt-2">
             <Button type="button" variant="outline" onClick={onClose} className="flex-1 bg-transparent">
               <EditableText
-                contentKey="purchaseModal.cancelButton"
-                defaultValue={content.cancelButton}
-                as="span"
+                value={content.cancelButton}
+                onChange={(value) => onContentChange?.("cancelButton", value)}
+                isEditable={isAdmin}
               />
             </Button>
             <Button type="submit" className="flex-1" disabled={isSubmitting}>
@@ -206,9 +209,9 @@ export function PurchaseContactModal({
                 "Submitting..."
               ) : (
                 <EditableText
-                  contentKey="purchaseModal.submitButton"
-                  defaultValue={content.submitButton}
-                  as="span"
+                  value={content.submitButton}
+                  onChange={(value) => onContentChange?.("submitButton", value)}
+                  isEditable={isAdmin}
                 />
               )}
             </Button>

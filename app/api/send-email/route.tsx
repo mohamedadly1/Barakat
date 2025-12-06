@@ -1,5 +1,4 @@
-// Note: API routes don't work with static export
-// This file will be ignored during static build
+export const dynamic = "force-dynamic"; // prevents Next.js from running at build
 
 import { NextResponse } from "next/server";
 import { Resend } from "resend";

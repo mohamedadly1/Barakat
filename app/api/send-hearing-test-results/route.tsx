@@ -1,5 +1,4 @@
-// Note: API routes don't work with static export
-// This file will be ignored during static build
+export const dynamic = "force-dynamic"
 
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
@@ -320,14 +319,12 @@ export async function POST(request: Request) {
       html: htmlContent,
     })
 
-    const emailId = (data as any)?.id ?? null
-
-    console.log("[v0] Hearing test results email sent successfully to", recipientEmail, "with ID:", emailId)
+    console.log("[v0] Hearing test results email sent successfully to", recipientEmail, "with ID:", data.id)
 
     return NextResponse.json({
       success: true,
       message: "Test results sent successfully",
-      id: emailId,
+      id: data.id,
       recipientEmail,
     })
   } catch (error: any) {

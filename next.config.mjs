@@ -6,13 +6,6 @@ const nextConfig = {
   // ADD THIS BLOCK to disable Image Optimization
   images: {
     unoptimized: true,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-        pathname: '/**',
-      },
-    ],
   },
 }
 

@@ -43,7 +43,7 @@ export default function AboutPage() {
               ABOUT US
             </h1>
             <h2 className="mb-4 text-2xl font-semibold drop-shadow-md md:text-3xl lg:text-4xl">
-              Al Barakat Hearing Centers
+              Al Barakat Hearing Care
             </h2>
             <p className="mb-6 text-xl font-medium drop-shadow-md md:text-2xl">
               Your Trusted Hearing Care Partner Across Saudi Arabia
@@ -55,7 +55,7 @@ export default function AboutPage() {
               <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
                 <Link href="/booking">Book Appointment</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+              <Button asChild size="lg" variant="outline" className="bg-white/10">
                 <Link href="/contact">Contact Us</Link>
               </Button>
             </div>
@@ -69,34 +69,29 @@ export default function AboutPage() {
       {/* Introduction Section */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto max-w-7xl px-4">
-          <div className="grid gap-8 md:grid-cols-2 items-center mb-12">
-            <div className="group relative h-64 w-full md:h-80 rounded-xl overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-105">
-              <Image
-                src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=800&q=80"
-                alt="Professional audiologist consultation"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <h3 className="text-xl font-bold">Expert Consultation</h3>
-                <p className="text-sm opacity-90">Professional hearing care</p>
-              </div>
-            </div>
-            <div className="group relative h-64 w-full md:h-80 rounded-xl overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-105">
-              <Image
-                src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80"
-                alt="Modern hearing test equipment"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <h3 className="text-xl font-bold">Advanced Technology</h3>
-                <p className="text-sm opacity-90">State-of-the-art equipment</p>
-              </div>
-            </div>
-          </div>
+        <div className="grid gap-8 mb-12">
+  {/* The container no longer enforces a grid, but keeps the padding/margins */}
+  
+  <div className="group relative h-96 w-full rounded-xl overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-105">
+    {/* Image: We use the source from the first card, but you can choose either */}
+    <Image
+      src="/Screenshot 2025-12-06 at 11.18.30 PM.png"
+      alt="Professional audiologist consultation"
+      fill
+      className="object-cover"
+    />
+    {/* Overlay for text legibility */}
+    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+    
+    {/* Content Box */}
+    <div className="absolute bottom-0 left-0 right-0 p-6 text-white text-center">
+      <h3 className="text-2xl font-bold">Comprehensive Hearing Solutions</h3>
+      <p className="text-base opacity-90">
+        Expert Consultation and Advanced Technology Combined
+      </p>
+    </div>
+  </div>
+</div>
           <div className="mx-auto max-w-4xl space-y-6 text-lg text-muted-foreground">
             <p>
               At Al Barakat Hearing Centers, we believe that better hearing means a better quality of life. For more than 30 years, we have supported thousands of individuals and families across the Kingdom of Saudi Arabia with professional hearing assessments, advanced hearing aid technology, and personalized care.
@@ -122,17 +117,18 @@ export default function AboutPage() {
         <div className="container mx-auto max-w-7xl px-4">
           <div className="mx-auto max-w-4xl">
             <h2 className="mb-8 text-center text-3xl font-bold md:text-4xl">Our Story</h2>
-            <div className="mb-8 relative h-80 w-full rounded-xl overflow-hidden shadow-2xl group">
+            <div className="mb-8 relative h-96 w-full md:h-[500px] rounded-xl overflow-hidden shadow-2xl group">
               <Image
-                src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&q=80"
-                alt="Our story - team collaboration"
+                src="/2024-03-27.jpg"
+                alt="Al Barakat Hearing Care Center - Our building"
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                priority
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/40 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                <h3 className="text-2xl font-bold mb-2">30+ Years of Excellence</h3>
-                <p className="text-lg opacity-90">Serving communities across Saudi Arabia</p>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/60 via-primary/40 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 text-white">
+                <h3 className="text-3xl md:text-4xl font-bold mb-3 drop-shadow-lg">30+ Years of Excellence</h3>
+                <p className="text-lg md:text-xl opacity-95 drop-shadow-md">Serving communities across Saudi Arabia</p>
               </div>
             </div>
             <div className="space-y-6 text-lg text-muted-foreground">
@@ -260,32 +256,22 @@ export default function AboutPage() {
 
               <div>
                 <h3 className="mb-4 text-2xl font-bold">Who We Are</h3>
-                <div className="mb-6 grid gap-6 md:grid-cols-2">
-                  <div className="group relative h-56 w-full rounded-xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-105">
-                    <Image
-                      src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80"
-                      alt="Modern hearing aid technology"
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                      <p className="font-semibold">Premium Hearing Solutions</p>
-                    </div>
-                  </div>
-                  <div className="group relative h-56 w-full rounded-xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-105">
-                    <Image
-                      src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80"
-                      alt="Professional audiology services"
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                      <p className="font-semibold">Expert Care & Support</p>
-                    </div>
-                  </div>
-                </div>
+                <div className="mb-6">
+                <div className="mb-6">
+  <div className="group relative w-100 aspect-square rounded-xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-105">
+    <Image
+      src="/Screenshot 2025-12-07 at 12.46.49 AM.png"
+      alt="Premium Hearing Solutions"
+      fill
+      className="object-cover"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+    <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+      <p className="font-semibold text-lg">Premium Hearing Solutions</p>
+    </div>
+  </div>
+</div>
+</div>
                 <div className="space-y-4 text-muted-foreground">
                   <p>
                     Al Barakat Hearing Centers is an audiology focused healthcare provider dedicated to offering accurate diagnostics, personalized hearing solutions, and professional follow-up care. Our team consists of licensed audiologists, hearing aid specialists, and experienced support staff who prioritize clinical excellence, professional ethics, and client satisfaction.
@@ -383,7 +369,7 @@ export default function AboutPage() {
                 <CardContent className="p-0">
                   <div className="relative h-64 w-full overflow-hidden group">
                     <Image
-                      src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=800&q=80"
+                      src="Signia_soundwave-logo_1200x630.jpg"
                       alt="Signia hearing aid technology"
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
@@ -395,9 +381,7 @@ export default function AboutPage() {
                   </div>
                   <div className="p-6">
                   <div className="mb-4 flex justify-center">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-                      <Award className="h-8 w-8 text-primary" />
-                    </div>
+                   
                   </div>
                     <div className="mb-4 flex justify-center">
                       <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
@@ -417,7 +401,7 @@ export default function AboutPage() {
                 <CardContent className="p-0">
                   <div className="relative h-64 w-full overflow-hidden group">
                     <Image
-                      src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=800&q=80"
+                      src="rexton-logo-yellow-2000x1500px.webp"
                       alt="Rexton hearing aid technology"
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
@@ -429,9 +413,7 @@ export default function AboutPage() {
                   </div>
                   <div className="p-6">
                   <div className="mb-4 flex justify-center">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-secondary/10">
-                      <Shield className="h-8 w-8 text-secondary" />
-                    </div>
+                  
                   </div>
                     <div className="mb-4 flex justify-center">
                       <div className="flex h-16 w-16 items-center justify-center rounded-full bg-secondary/10">
@@ -485,161 +467,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto max-w-7xl px-4">
-          <h2 className="mb-4 text-center text-3xl font-bold md:text-4xl">Why Choose Us</h2>
-          <p className="mb-12 text-center text-lg text-muted-foreground">
-            At Al Barakat Hearing Centers, we combine clinical excellence, advanced technology, and a patient-first approach to provide hearing care you can trust. Our commitment is to deliver reliable, high-quality services that support every patient's comfort, confidence, and long-term hearing health.
-          </p>
-
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            <Card className="overflow-hidden hover:shadow-xl transition-shadow">
-              <CardContent className="p-0">
-                <div className="relative h-48 w-full overflow-hidden group">
-                  <Image
-                    src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&q=80"
-                    alt="Advanced hearing technology"
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                </div>
-                <div className="p-6">
-                <div className="mb-4 flex justify-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-                    <Globe className="h-8 w-8 text-primary" />
-                  </div>
-                </div>
-                  <div className="mb-4 flex justify-center">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-                      <Globe className="h-8 w-8 text-primary" />
-                    </div>
-                  </div>
-                  <h3 className="mb-3 text-center text-xl font-semibold">Expertise Backed by Global Technology</h3>
-                  <p className="text-center text-sm text-muted-foreground">
-                    We partner with world-leading hearing aid manufacturers, including Signia and Rexton, ensuring our patients receive the latest innovations in hearing technology, from AI-enhanced sound processing to precision fitting systems.
-                    Our specialists are continuously trained to international standards, allowing us to deliver care that is both scientifically advanced and clinically dependable.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="overflow-hidden hover:shadow-xl transition-shadow">
-              <CardContent className="p-0">
-                <div className="relative h-48 w-full overflow-hidden group">
-                  <Image
-                    src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80"
-                    alt="Comprehensive hearing services"
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                </div>
-                <div className="p-6">
-                <div className="mb-4 flex justify-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-secondary/10">
-                    <Building2 className="h-8 w-8 text-secondary" />
-                  </div>
-                </div>
-                  <div className="mb-4 flex justify-center">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-secondary/10">
-                      <Building2 className="h-8 w-8 text-secondary" />
-                    </div>
-                  </div>
-                  <h3 className="mb-3 text-center text-xl font-semibold">Comprehensive Hearing Services Under One Roof</h3>
-                  <p className="text-center text-sm text-muted-foreground">
-                    From hearing evaluations and tinnitus assessments to hearing aid fitting, programming, and maintenance, we offer a full spectrum of services in one convenient location.
-                    This ensures a smooth, efficient, and fully supported care experience from your very first visit.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="pt-6">
-                <div className="mb-4 flex justify-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent/10">
-                    <Users className="h-8 w-8 text-accent" />
-                  </div>
-                </div>
-                <h3 className="mb-3 text-center text-xl font-semibold">Patient-Centered Care and Personalized Solutions</h3>
-                <p className="text-center text-sm text-muted-foreground">
-                  Every patient's hearing needs are unique. We take the time to understand your lifestyle, challenges, and goals before recommending a solution.
-                  Our approach is based on accurate diagnostics, tailored hearing aid fittings, and continuous follow-up care, ensuring each patient receives solutions that perfectly match their hearing profile and daily life.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="pt-6">
-                <div className="mb-4 flex justify-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-                    <Award className="h-8 w-8 text-primary" />
-                  </div>
-                </div>
-                <h3 className="mb-3 text-center text-xl font-semibold">Trusted Reputation Across Kingdom of Saudi Arabia</h3>
-                <p className="text-center text-sm text-muted-foreground">
-                  With years of experience serving communities across the Kingdom of Saudi Arabia, Al Barakat Hearing Centers has built a strong reputation for professionalism, integrity, and dependable results.
-                  Patients choose us because they know we are committed to long-term relationships, not temporary solutions.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="pt-6">
-                <div className="mb-4 flex justify-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-secondary/10">
-                    <Stethoscope className="h-8 w-8 text-secondary" />
-                  </div>
-                </div>
-                <h3 className="mb-3 text-center text-xl font-semibold">High-Quality, Reliable, and Cost-Effective Solutions</h3>
-                <p className="text-center text-sm text-muted-foreground">
-                  We deliver hearing solutions that balance premium quality with practical value.
-                  Through our partnerships with Signia and Rexton, we provide a wide range of devices from premium high-end models to affordable, effective options, ensuring every patient finds a solution that fits both their needs and budget.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="pt-6">
-                <div className="mb-4 flex justify-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent/10">
-                    <Heart className="h-8 w-8 text-accent" />
-                  </div>
-                </div>
-                <h3 className="mb-3 text-center text-xl font-semibold">Comfortable, Supportive, and Confidential Environment</h3>
-                <p className="text-center text-sm text-muted-foreground">
-                  We understand that hearing loss can be personal and sometimes overwhelming.
-                  Our centers are designed to provide a calm, welcoming, and confidential space where patients of all ages (adults, seniors, and children) can feel comfortable and understood.
-                  Our team listens with compassion and communicates clearly, helping you feel confident every step of the way.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <Card className="mt-8">
-            <CardContent className="pt-6">
-              <div className="mb-4 flex justify-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-                  <Handshake className="h-8 w-8 text-primary" />
-                </div>
-              </div>
-              <h3 className="mb-4 text-center text-2xl font-bold">Continuous Support and After-Care</h3>
-              <p className="text-center text-muted-foreground">
-                Choosing a hearing aid is just the beginning.
-                We provide ongoing adjustments, cleanings, counseling, and follow-ups to ensure you enjoy optimal performance and comfort at all times.
-                Our dedicated after-care program reflects our commitment to improving your hearing for the long term not just at the point of sale.
-              </p>
-            </CardContent>
-          </Card>
-
-          <div className="mt-12 text-center">
-            <h3 className="mb-4 text-2xl font-bold">Your Hearing, Our Priority</h3>
-            <p className="text-lg text-muted-foreground">
-              At Al Barakat Hearing Centers, we combine professional care, advanced technology, and genuine compassion to help you hear better, live better, and stay connected to the moments that matter most.
-            </p>
-          </div>
-        </div>
-      </section>
+   
 
       {/* Careers */}
       <section className="bg-muted/50 py-12 md:py-16">

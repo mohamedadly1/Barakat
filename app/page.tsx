@@ -1,4 +1,4 @@
-"use client"
+ "use client"
 import Image from "next/image"
 import Link from "next/link"
 import { MainNavigation } from "@/components/main-navigation"
@@ -7,7 +7,9 @@ import { HearingNewsCarousel } from "@/components/hearing-news-carousel"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { EditableText } from "@/components/editable-text"
-import { Ear, Heart, Shield, Users, ArrowRight, CheckCircle2 } from "lucide-react"
+// --- FIX: Added Award and CheckCircle here ---
+import { Ear, Heart, Shield, Users, ArrowRight, CheckCircle2, Award, CheckCircle } from "lucide-react"
+// ---------------------------------------------
 import { productCategories, brands } from "@/lib/hearing-data"
 import { getStoredProducts, getSiteContent, getStoredBrands, addBrand, deleteBrand } from "@/lib/content-store"
 import { useEffect, useState } from "react"
@@ -341,8 +343,131 @@ export default function HomePage() {
         </div>
       </section>
 
+
+
+      {/* Our Partners */}
+      <section className="bg-muted/50 py-12 md:py-16">
+        <div className="container mx-auto max-w-7xl px-4">
+          <h2 className="mb-12 text-center text-3xl font-bold md:text-4xl">Our Partners</h2>
+          <div className="mx-auto max-w-4xl space-y-8">
+            <p className="text-center text-lg text-muted-foreground">
+              At Al Barakat Hearing Centers, we are proud to collaborate with some of the world's leading innovators in hearing technology. Our strategic partnerships reflect our commitment to delivering exceptional care, advanced solutions, and internationally recognized quality to our patients across Saudi Arabia.
+            </p>
+
+            <div className="grid gap-8 md:grid-cols-2">
+              <Card className="overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                <CardContent className="p-0">
+                  <div className="relative h-64 w-full overflow-hidden group">
+                    <Image
+                      src="Signia_soundwave-logo_1200x630.jpg"
+                      alt="Signia hearing aid technology"
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
+                    <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                      <h4 className="text-lg font-bold">Signia Technology</h4>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                  <div className="mb-4 flex justify-center">
+                   
+                  </div>
+                    <div className="mb-4 flex justify-center">
+                      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+                        <Award className="h-8 w-8 text-primary" />
+                      </div>
+                    </div>
+                    <h3 className="mb-4 text-center text-2xl font-bold">Signia – Global Leader in Hearing Innovation</h3>
+                    <p className="text-center text-muted-foreground">
+                      As an authorized partner of Signia, we offer access to one of the industry's most advanced hearing aid portfolios. Signia's cutting-edge technologies—such as Integrated Xperience, Augmented Xperience, Own Voice Processing (OVP™), and AI-driven sound processing enable us to provide patients with exceptional clarity, natural sound, and personalized performance in every environment.
+                      This partnership ensures our patients benefit from the latest breakthroughs in premium hearing care.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                <CardContent className="p-0">
+                  <div className="relative h-64 w-full overflow-hidden group">
+                    <Image
+                      src="rexton-logo-yellow-2000x1500px.webp"
+                      alt="Rexton hearing aid technology"
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 to-transparent"></div>
+                    <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                      <h4 className="text-lg font-bold">Rexton Technology</h4>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                  <div className="mb-4 flex justify-center">
+                  
+                  </div>
+                    <div className="mb-4 flex justify-center">
+                      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-secondary/10">
+                        <Shield className="h-8 w-8 text-secondary" />
+                      </div>
+                    </div>
+                    <h3 className="mb-4 text-center text-2xl font-bold">Rexton – Trusted, Reliable, and Durable Solutions</h3>
+                    <p className="text-center text-muted-foreground">
+                      Our collaboration with Rexton allows us to deliver robust, dependable hearing solutions designed for daily performance and long-term reliability. With a strong reputation for durability, ease of use, and value, Rexton devices support individuals seeking effective technology they can trust in any condition.
+                      Through this partnership, we ensure every patient receives solutions that balance practicality, quality, and comfort.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <Card>
+              <CardContent className="pt-6">
+                <h3 className="mb-4 text-center text-2xl font-bold">A Commitment to Excellence Through Collaboration</h3>
+                <p className="mb-4 text-center text-muted-foreground">
+                  By partnering with globally recognized leaders in hearing technology, Al Barakat Hearing Centers is able to offer:
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                    <span className="text-muted-foreground">International-quality hearing aids and accessories.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                    <span className="text-muted-foreground">Advanced diagnostic and fitting technologies.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                    <span className="text-muted-foreground">Certified service, programming, and maintenance.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                    <span className="text-muted-foreground">Continuous updates on the latest global innovations.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                    <span className="text-muted-foreground">Enhanced patient outcomes supported by proven technology.</span>
+                  </li>
+                </ul>
+                <p className="mt-4 text-center text-muted-foreground">
+                  These partnerships strengthen our ability to deliver comprehensive, high-standard hearing care, ensuring that each patient receives solutions that meet both medical needs and everyday lifestyle expectations.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+
+
+
+
+
       {/* Hearing News Carousel */}
       <HearingNewsCarousel />
+
+      
+
+
 
       
       {/* Footer */}

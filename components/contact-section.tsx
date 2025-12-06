@@ -91,17 +91,19 @@ export function ContactSection({ content, isAdmin, onEdit }: ContactSectionProps
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12 lg:mb-16">
             <EditableText
-              contentKey="contact.title"
-              defaultValue={content.title}
-              as="h2"
+              value={content.title}
+              onChange={(value) => onEdit?.("title", value)}
+              isAdmin={isAdmin}
               className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-balance"
+              placeholder="Contact section title"
             />
             <EditableText
-              contentKey="contact.subtitle"
-              defaultValue={content.subtitle}
-              as="p"
+              value={content.subtitle}
+              onChange={(value) => onEdit?.("subtitle", value)}
+              isAdmin={isAdmin}
               className="text-lg text-muted-foreground text-balance"
               multiline
+              placeholder="Contact section subtitle"
             />
           </div>
 
@@ -146,10 +148,11 @@ export function ContactSection({ content, isAdmin, onEdit }: ContactSectionProps
                 <div className="flex-1">
                   <h3 className="font-semibold mb-1">Phone</h3>
                   <EditableText
-                    contentKey="contact.phone"
-                    defaultValue={content.phone}
-                    as="p"
+                    value={content.phone}
+                    onChange={(value) => onEdit?.("phone", value)}
+                    isAdmin={isAdmin}
                     className="text-muted-foreground"
+                    placeholder="Phone number"
                   />
                 </div>
               </div>
@@ -161,10 +164,11 @@ export function ContactSection({ content, isAdmin, onEdit }: ContactSectionProps
                 <div className="flex-1">
                   <h3 className="font-semibold mb-1">Email</h3>
                   <EditableText
-                    contentKey="contact.email"
-                    defaultValue={content.email}
-                    as="p"
+                    value={content.email}
+                    onChange={(value) => onEdit?.("email", value)}
+                    isAdmin={isAdmin}
                     className="text-muted-foreground"
+                    placeholder="Email address"
                   />
                 </div>
               </div>
@@ -176,11 +180,12 @@ export function ContactSection({ content, isAdmin, onEdit }: ContactSectionProps
                 <div className="flex-1">
                   <h3 className="font-semibold mb-1">Address</h3>
                   <EditableText
-                    contentKey="contact.address"
-                    defaultValue={content.address}
-                    as="p"
+                    value={content.address}
+                    onChange={(value) => onEdit?.("address", value)}
+                    isAdmin={isAdmin}
                     className="text-muted-foreground whitespace-pre-line"
                     multiline
+                    placeholder="Address"
                   />
                 </div>
               </div>

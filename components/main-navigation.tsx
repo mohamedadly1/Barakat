@@ -1,4 +1,4 @@
-"use client"
+ "use client"
 
 // 1. Consolidated React Imports
 import React, { useState, useEffect } from "react" 
@@ -78,8 +78,10 @@ export function MainNavigation() {
 
   const toggleSection = (section: string, e?: React.MouseEvent) => {
     if (e) {
-      e.preventDefault()
-      e.stopPropagation() // Prevent event bubbling
+      // Prevents link navigation (for the button)
+      e.preventDefault() 
+      // Prevents event from bubbling up to the SheetContent, which would close the entire menu
+      e.stopPropagation() 
     }
     setExpandedSection((prev) => {
       // If clicking the same section, close it. Otherwise, open the new one
@@ -88,11 +90,11 @@ export function MainNavigation() {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white xl:bg-background/95 xl:backdrop-blur supports-[backdrop-filter]:xl:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto max-w-7xl flex h-16 items-center gap-2 px-4">
         <Link href="/" className="flex items-center gap-2 group flex-shrink-0">
-          {/* Logo container: Increased size on mobile only */}
-          <div className="relative h-20 w-52 xl:h-10 xl:w-32 transition-transform duration-300 group-hover:scale-110"> 
+          {/* Logo container: Fixed non-standard Tailwind classes */}
+          <div className="relative h-10 w-32 transition-transform duration-300 group-hover:scale-110"> 
             <Image
               src="/images/albarakal-logo (1).png"
               alt="Al-Barakat Hearing Care Center Logo"
@@ -356,7 +358,7 @@ export function MainNavigation() {
               <div className="sticky top-0 z-10 bg-gradient-to-r from-primary to-secondary p-6 shadow-lg">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                      <div className="relative h-16 w-16">
+                    <div className="relative h-12 w-12">
                       <Image
                         src="/images/albarakal-logo (1).png"
                         alt="Al-Barakat Hearing Care Center Logo"
@@ -466,10 +468,10 @@ export function MainNavigation() {
                       </div>
                     </div>
 
-                    {/* Products Section - FIX APPLIED: Changed ID from "products" to "products-menu" */}
+                    {/* Products Section */}
                     <div className="rounded-xl border border-border/50 overflow-hidden bg-card/50 backdrop-blur-sm">
                       <button
-                        onClick={(e) => toggleSection("products-menu", e)} // FIXED ID
+                        onClick={(e) => toggleSection("products-menu", e)}
                         className="w-full flex items-center justify-between p-4 hover:bg-accent/10 transition-colors"
                       >
                         <div className="flex items-center gap-3">
@@ -479,14 +481,14 @@ export function MainNavigation() {
                         <ChevronRight
                           className={cn(
                             "h-5 w-5 text-muted-foreground transition-transform duration-300",
-                            expandedSection === "products-menu" && "rotate-90", // FIXED ID
+                            expandedSection === "products-menu" && "rotate-90",
                           )}
                         />
                       </button>
                       <div
                         className={cn(
                           "overflow-hidden transition-all duration-300 ease-in-out",
-                          expandedSection === "products-menu" ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0", // FIXED ID
+                          expandedSection === "products-menu" ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0",
                         )}
                       >
                         <div className="p-2 space-y-1 bg-accent/5">
@@ -497,24 +499,18 @@ export function MainNavigation() {
                             const isCategoryExpanded = expandedSection === category.id;
                             
                             if (hasSubItems) {
-                              // Category with nested items (Brands, Technology) - These use their own unique IDs for toggle
+                              // Category with nested items (Brands, Technology)
                               return (
                                 <div 
                                   key={category.id} 
                                   className="w-full border-b border-border/20 last:border-b-0"
-                                  onClick={(e) => {
-                                    // Stop propagation to prevent closing the sheet
-                                    e.stopPropagation()
-                                  }}
+                                  // FIX APPLIED: Removed onClick={(e) => { e.stopPropagation() }} from the div
                                 >
                                   <button
                                     type="button"
                                     data-expandable="true"
-                                    onClick={(e) => {
-                                      e.preventDefault()
-                                      e.stopPropagation()
-                                      toggleSection(category.id, e)
-                                    }}
+                                    // FIX APPLIED: Simplified to rely ONLY on the toggleSection function
+                                    onClick={(e) => toggleSection(category.id, e)} 
                                     className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-accent/20 transition-all duration-200 group"
                                   >
                                     <div className="flex items-center gap-3">
@@ -529,7 +525,7 @@ export function MainNavigation() {
                                     />
                                   </button>
 
-                                  {/* Sub-Items Container - This will now appear correctly */}
+                                  {/* Sub-Items Container */}
                                   <div
                                     className={cn(
                                       "overflow-hidden transition-all duration-300 ease-in-out",
@@ -547,7 +543,7 @@ export function MainNavigation() {
                                             <Link
                                               key={item.id}
                                               href={item.href}
-                                              onClick={() => setIsOpen(false)}
+                                              onClick={() => setIsOpen(false)} // Closes the sheet on navigation
                                               className="flex items-center gap-3 p-2 rounded-lg hover:bg-accent/30 transition-all duration-200 group"
                                             >
                                               <div className="h-1.5 w-1.5 rounded-full bg-secondary" />
@@ -562,7 +558,7 @@ export function MainNavigation() {
                                         <Link
                                           key={item.id}
                                           href={item.href}
-                                          onClick={() => setIsOpen(false)}
+                                          onClick={() => setIsOpen(false)} // Closes the sheet on navigation
                                           className="flex items-center gap-3 p-2 rounded-lg hover:bg-accent/30 transition-all duration-200 group"
                                         >
                                           <div className="h-1.5 w-1.5 rounded-full bg-secondary" />
