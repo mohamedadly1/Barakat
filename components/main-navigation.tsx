@@ -1,10 +1,11 @@
 "use client"
 
-import type React from "react"
+// 1. Consolidated React Imports
+import React, { useState, useEffect } from "react" 
 import Image from "next/image"
-
-import { useState, useEffect } from "react"
 import Link from "next/link"
+
+// 2. UI Components Imports
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import {
@@ -15,6 +16,8 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
+
+// 3. Lucide Icons Imports (All necessary icons consolidated here)
 import {
   Menu,
   Calendar,
@@ -23,24 +26,37 @@ import {
   Stethoscope,
   Activity,
   TestTube,
-  Package,
-  Grid3x3,
-  Tag,
-  Battery,
-  Mail,
-  MessageCircle,
   BookOpen,
   HelpCircle,
   Building,
   ChevronRight,
   Home,
   X,
+  Zap, // For Technology Icon
+  Volume2, // For Tinnitus Icon
+  Grid3x3, // For Category Icon
+  Tag, // For Brands Icon
+  Battery, // For Accessories Icon
+  Mail,
+  MessageCircle,
 } from "lucide-react"
+
+// 4. Utility and Data Imports
 import { cn } from "@/lib/utils"
 import { checkAdminAuth } from "@/lib/admin-auth"
 import { EditableText } from "@/components/editable-text"
 import { getEditableContent } from "@/lib/inline-content-store"
 import { ProductsMegaMenu } from "@/components/products-mega-menu"
+import { productsMenuStructure } from "@/lib/products-menu-structure"
+
+// New Icon Map for Product Categories in Mobile Sidebar
+const categoryIconMap: Record<string, React.ReactNode> = {
+  Grid3x3: <Grid3x3 className="h-4 w-4 text-primary" />,
+  Tag: <Tag className="h-4 w-4 text-secondary" />,
+  Zap: <Zap className="h-4 w-4 text-accent" />,
+  Volume2: <Volume2 className="h-4 w-4 text-primary" />,
+  Battery: <Battery className="h-4 w-4 text-secondary" />,
+}
 
 export function MainNavigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -60,15 +76,23 @@ export function MainNavigation() {
     return () => window.removeEventListener("contentUpdated", handleContentUpdate)
   }, [])
 
-  const toggleSection = (section: string) => {
-    setExpandedSection(expandedSection === section ? null : section)
+  const toggleSection = (section: string, e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault()
+      e.stopPropagation() // Prevent event bubbling
+    }
+    setExpandedSection((prev) => {
+      // If clicking the same section, close it. Otherwise, open the new one
+      return prev === section ? null : section
+    })
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-white xl:bg-background/95 xl:backdrop-blur supports-[backdrop-filter]:xl:bg-background/60">
       <div className="container mx-auto max-w-7xl flex h-16 items-center gap-2 px-4">
         <Link href="/" className="flex items-center gap-2 group flex-shrink-0">
-          <div className="relative h-32 w-32 transition-transform duration-300 group-hover:scale-110">
+          {/* Logo container: Increased size on mobile only */}
+          <div className="relative h-20 w-52 xl:h-10 xl:w-32 transition-transform duration-300 group-hover:scale-110"> 
             <Image
               src="/images/albarakal-logo (1).png"
               alt="Al-Barakat Hearing Care Center Logo"
@@ -78,7 +102,7 @@ export function MainNavigation() {
             />
           </div>
           <span className="text-xs font-semibold sm:text-sm md:text-base whitespace-nowrap">
-            <EditableText contentKey="nav.brandName" defaultValue="Al-Barakat Hearing Care" as="span" />
+            <EditableText contentKey="nav.brandName" defaultValue="" as="span" />
           </span>
         </Link>
 
@@ -332,9 +356,9 @@ export function MainNavigation() {
               <div className="sticky top-0 z-10 bg-gradient-to-r from-primary to-secondary p-6 shadow-lg">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="relative h-12 w-12">
+                      <div className="relative h-16 w-16">
                       <Image
-                        src="/images/albarakal-logo.png"
+                        src="/images/albarakal-logo (1).png"
                         alt="Al-Barakat Hearing Care Center Logo"
                         fill
                         className="object-contain"
@@ -393,7 +417,7 @@ export function MainNavigation() {
                     {/* Hearing Health Section */}
                     <div className="rounded-xl border border-border/50 overflow-hidden bg-card/50 backdrop-blur-sm">
                       <button
-                        onClick={() => toggleSection("hearing")}
+                        onClick={(e) => toggleSection("hearing", e)}
                         className="w-full flex items-center justify-between p-4 hover:bg-accent/10 transition-colors"
                       >
                         <div className="flex items-center gap-3">
@@ -442,62 +466,140 @@ export function MainNavigation() {
                       </div>
                     </div>
 
-                    {/* Products Section */}
+                    {/* Products Section - FIX APPLIED: Changed ID from "products" to "products-menu" */}
                     <div className="rounded-xl border border-border/50 overflow-hidden bg-card/50 backdrop-blur-sm">
                       <button
-                        onClick={() => toggleSection("products")}
+                        onClick={(e) => toggleSection("products-menu", e)} // FIXED ID
                         className="w-full flex items-center justify-between p-4 hover:bg-accent/10 transition-colors"
                       >
                         <div className="flex items-center gap-3">
-                          <Package className="h-5 w-5 text-secondary" />
-                          <span className="font-semibold">Products</span>
+                          <Ear className="h-5 w-5 text-secondary" />
+                          <span className="font-semibold">Products & Accessories</span>
                         </div>
                         <ChevronRight
                           className={cn(
                             "h-5 w-5 text-muted-foreground transition-transform duration-300",
-                            expandedSection === "products" && "rotate-90",
+                            expandedSection === "products-menu" && "rotate-90", // FIXED ID
                           )}
                         />
                       </button>
                       <div
                         className={cn(
                           "overflow-hidden transition-all duration-300 ease-in-out",
-                          expandedSection === "products" ? "max-h-96 opacity-100" : "max-h-0 opacity-0",
+                          expandedSection === "products-menu" ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0", // FIXED ID
                         )}
                       >
                         <div className="p-2 space-y-1 bg-accent/5">
-                          <Link
-                            href="/products"
-                            onClick={() => setIsOpen(false)}
-                            className="flex items-center gap-3 p-3 rounded-lg hover:bg-accent/20 transition-all duration-200 group"
-                          >
-                            <Grid3x3 className="h-4 w-4 text-primary" />
-                            <span className="text-sm">All Products</span>
-                          </Link>
-                          <Link
-                            href="/products#brands"
-                            onClick={() => setIsOpen(false)}
-                            className="flex items-center gap-3 p-3 rounded-lg hover:bg-accent/20 transition-all duration-200 group"
-                          >
-                            <Tag className="h-4 w-4 text-secondary" />
-                            <span className="text-sm">Premium Brands</span>
-                          </Link>
-                          <Link
-                            href="/products#accessories"
-                            onClick={() => setIsOpen(false)}
-                            className="flex items-center gap-3 p-3 rounded-lg hover:bg-accent/20 transition-all duration-200 group"
-                          >
-                            <Battery className="h-4 w-4 text-accent" />
-                            <span className="text-sm">Accessories</span>
-                          </Link>
+                          <h5 className="text-xs font-semibold uppercase text-muted-foreground tracking-wider p-3">Categories</h5>
+
+                          {productsMenuStructure.categories.map((category) => {
+                            const hasSubItems = category.submenu || category.items;
+                            const isCategoryExpanded = expandedSection === category.id;
+                            
+                            if (hasSubItems) {
+                              // Category with nested items (Brands, Technology) - These use their own unique IDs for toggle
+                              return (
+                                <div 
+                                  key={category.id} 
+                                  className="w-full border-b border-border/20 last:border-b-0"
+                                  onClick={(e) => {
+                                    // Stop propagation to prevent closing the sheet
+                                    e.stopPropagation()
+                                  }}
+                                >
+                                  <button
+                                    type="button"
+                                    data-expandable="true"
+                                    onClick={(e) => {
+                                      e.preventDefault()
+                                      e.stopPropagation()
+                                      toggleSection(category.id, e)
+                                    }}
+                                    className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-accent/20 transition-all duration-200 group"
+                                  >
+                                    <div className="flex items-center gap-3">
+                                      {categoryIconMap[category.icon as string] || <div className="h-4 w-4" />}
+                                      <span className="text-sm font-medium">{category.label}</span>
+                                    </div>
+                                    <ChevronRight
+                                      className={cn(
+                                        "h-4 w-4 text-muted-foreground transition-transform duration-300",
+                                        isCategoryExpanded && "rotate-90",
+                                      )}
+                                    />
+                                  </button>
+
+                                  {/* Sub-Items Container - This will now appear correctly */}
+                                  <div
+                                    className={cn(
+                                      "overflow-hidden transition-all duration-300 ease-in-out",
+                                      isCategoryExpanded 
+                                        ? "max-h-[600px] opacity-100 pointer-events-auto" 
+                                        : "max-h-0 opacity-0 pointer-events-none"
+                                    )}
+                                  >
+                                    <div className="ml-6 p-2 space-y-1 bg-accent/10 rounded-b-lg">
+                                      {/* Mapping over Submenu (Brands structure) */}
+                                      {category.submenu?.map((brand) => (
+                                        <React.Fragment key={brand.id}>
+                                          <h6 className="text-xs font-semibold pt-2 text-primary/80 ml-1">{brand.label}</h6>
+                                          {brand.items?.map((item) => (
+                                            <Link
+                                              key={item.id}
+                                              href={item.href}
+                                              onClick={() => setIsOpen(false)}
+                                              className="flex items-center gap-3 p-2 rounded-lg hover:bg-accent/30 transition-all duration-200 group"
+                                            >
+                                              <div className="h-1.5 w-1.5 rounded-full bg-secondary" />
+                                              <span className="text-xs">{item.label}</span>
+                                            </Link>
+                                          ))}
+                                        </React.Fragment>
+                                      ))}
+
+                                      {/* Mapping over simple Items (Technology structure) */}
+                                      {category.items?.map((item) => (
+                                        <Link
+                                          key={item.id}
+                                          href={item.href}
+                                          onClick={() => setIsOpen(false)}
+                                          className="flex items-center gap-3 p-2 rounded-lg hover:bg-accent/30 transition-all duration-200 group"
+                                        >
+                                          <div className="h-1.5 w-1.5 rounded-full bg-secondary" />
+                                          <span className="text-xs">{item.label}</span>
+                                        </Link>
+                                      ))}
+                                    </div>
+                                  </div>
+                                </div>
+                              );
+                            }
+
+                            // Simple link category (Category, Tinnitus, Accessories)
+                            return (
+                              <Link
+                                key={category.id}
+                                href={category.href || "/products"}
+                                onClick={() => setIsOpen(false)}
+                                className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-accent/20 transition-all duration-200 group"
+                              >
+                                <div className="flex items-center gap-3">
+                                  {categoryIconMap[category.icon as string] || <div className="h-4 w-4" />}
+                                  <span className="text-sm font-medium">{category.label}</span>
+                                </div>
+                                {/* Removed ChevronRight here, as these are direct links */}
+                              </Link>
+                            );
+                          })}
                         </div>
                       </div>
                     </div>
+                    {/* End of Products Section */}
 
                     {/* Company Section */}
                     <div className="rounded-xl border border-border/50 overflow-hidden bg-card/50 backdrop-blur-sm">
                       <button
-                        onClick={() => toggleSection("company")}
+                        onClick={(e) => toggleSection("company", e)}
                         className="w-full flex items-center justify-between p-4 hover:bg-accent/10 transition-colors"
                       >
                         <div className="flex items-center gap-3">
@@ -541,7 +643,7 @@ export function MainNavigation() {
                     {/* Contact Section */}
                     <div className="rounded-xl border border-border/50 overflow-hidden bg-card/50 backdrop-blur-sm">
                       <button
-                        onClick={() => toggleSection("contact")}
+                        onClick={(e) => toggleSection("contact", e)}
                         className="w-full flex items-center justify-between p-4 hover:bg-accent/10 transition-colors"
                       >
                         <div className="flex items-center gap-3">
@@ -590,7 +692,7 @@ export function MainNavigation() {
                     {/* Resources Section */}
                     <div className="rounded-xl border border-border/50 overflow-hidden bg-card/50 backdrop-blur-sm">
                       <button
-                        onClick={() => toggleSection("resources")}
+                        onClick={(e) => toggleSection("resources", e)}
                         className="w-full flex items-center justify-between p-4 hover:bg-accent/10 transition-colors"
                       >
                         <div className="flex items-center gap-3">
