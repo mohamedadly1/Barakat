@@ -5,6 +5,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { Heart, Users, Award, Target, CheckCircle, Stethoscope, Headphones, Sparkles, Building2, Globe, Handshake, Zap, Shield } from "lucide-react"
 
+const screenshotImage = "/Screenshot 2025-12-06 at 11.18.30 PM.png"
+
 export default function AboutPage() {
   return (
     <div className="min-h-screen">
@@ -69,29 +71,14 @@ export default function AboutPage() {
       {/* Introduction Section */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto max-w-7xl px-4">
-        <div className="grid gap-8 mb-12">
-  {/* The container no longer enforces a grid, but keeps the padding/margins */}
-  
-  <div className="group relative h-96 w-full rounded-xl overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-105">
-    {/* Image: We use the source from the first card, but you can choose either */}
-    <Image
-      src="/Screenshot 2025-12-06 at 11.18.30 PM.png"
-      alt="Professional audiologist consultation"
-      fill
-      className="object-cover"
-    />
-    {/* Overlay for text legibility */}
-    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-    
-    {/* Content Box */}
-    <div className="absolute bottom-0 left-0 right-0 p-6 text-white text-center">
-      <h3 className="text-2xl font-bold">Comprehensive Hearing Solutions</h3>
-      <p className="text-base opacity-90">
-        Expert Consultation and Advanced Technology Combined
-      </p>
-    </div>
-  </div>
-</div>
+          <div className="relative h-64 w-full mb-12 md:h-80 overflow-hidden">
+            <Image
+              src="/Screenshot 2025-12-06 at 11.18.30 PM.png"
+              alt="Al Barakat Hearing Care"
+              fill
+              className="object-cover"
+            />
+          </div>
           <div className="mx-auto max-w-4xl space-y-6 text-lg text-muted-foreground">
             <p>
               At Al Barakat Hearing Centers, we believe that better hearing means a better quality of life. For more than 30 years, we have supported thousands of individuals and families across the Kingdom of Saudi Arabia with professional hearing assessments, advanced hearing aid technology, and personalized care.
@@ -137,14 +124,14 @@ export default function AboutPage() {
               </p>
               <p className="text-xl font-semibold text-foreground">
                 Make high-quality hearing care accessible, professional, and friendly for every community in Saudi Arabia.
-              </p>
-              <p>
+                </p>
+                <p>
                 Over the years, we have expanded our services, updated our technology, and welcomed thousands of clients from children experiencing their first hearing test to seniors rediscovering the joy of conversation.
-              </p>
-              <p>
+                </p>
+                <p>
                 What has never changed is our commitment to care.
                 We listen first to understand your needs, lifestyle, and concerns then we build a solution that fits you perfectly.
-              </p>
+                </p>
             </div>
           </div>
         </div>
@@ -175,7 +162,7 @@ export default function AboutPage() {
                   <div className="flex h-16 w-16 items-center justify-center rounded-full bg-secondary/10">
                     <Zap className="h-8 w-8 text-secondary" />
                   </div>
-            </div>
+                </div>
                 <h3 className="mb-3 text-center text-xl font-semibold">We Use World-Class Technology</h3>
                 <p className="text-center text-sm text-muted-foreground">
                   We partner with Signia and Rexton, two of the strongest hearing aid brands globally.
@@ -256,22 +243,16 @@ export default function AboutPage() {
 
               <div>
                 <h3 className="mb-4 text-2xl font-bold">Who We Are</h3>
-                <div className="mb-6">
-                <div className="mb-6">
-  <div className="group relative w-100 aspect-square rounded-xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-105">
-    <Image
-      src="/Screenshot 2025-12-07 at 12.46.49 AM.png"
-      alt="Premium Hearing Solutions"
-      fill
-      className="object-cover"
-    />
-    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-    <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity">
-      <p className="font-semibold text-lg">Premium Hearing Solutions</p>
-    </div>
-  </div>
-</div>
-</div>
+                <div className="mb-6 flex justify-center">
+                  <div className="relative h-64 w-64 md:h-80 md:w-80 rounded-xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-105">
+                    <Image
+                      src="/Screenshot 2025-12-07 at 12.46.49 AM.png"
+                      alt="Modern hearing aid technology"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
                 <div className="space-y-4 text-muted-foreground">
                   <p>
                     Al Barakat Hearing Centers is an audiology focused healthcare provider dedicated to offering accurate diagnostics, personalized hearing solutions, and professional follow-up care. Our team consists of licensed audiologists, hearing aid specialists, and experienced support staff who prioritize clinical excellence, professional ethics, and client satisfaction.
@@ -369,7 +350,7 @@ export default function AboutPage() {
                 <CardContent className="p-0">
                   <div className="relative h-64 w-full overflow-hidden group">
                     <Image
-                      src="Signia_soundwave-logo_1200x630.jpg"
+                      src="/Signia_soundwave-logo_1200x630.jpg"
                       alt="Signia hearing aid technology"
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
@@ -381,12 +362,12 @@ export default function AboutPage() {
                   </div>
                   <div className="p-6">
                   <div className="mb-4 flex justify-center">
-                   
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+                      <Award className="h-8 w-8 text-primary" />
+                    </div>
                   </div>
                     <div className="mb-4 flex justify-center">
-                      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-                        <Award className="h-8 w-8 text-primary" />
-                      </div>
+                      
                     </div>
                     <h3 className="mb-4 text-center text-2xl font-bold">Signia – Global Leader in Hearing Innovation</h3>
                     <p className="text-center text-muted-foreground">
@@ -401,7 +382,7 @@ export default function AboutPage() {
                 <CardContent className="p-0">
                   <div className="relative h-64 w-full overflow-hidden group">
                     <Image
-                      src="rexton-logo-yellow-2000x1500px.webp"
+                      src="/rexton-logo-yellow-2000x1500px.webp"
                       alt="Rexton hearing aid technology"
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
@@ -413,19 +394,19 @@ export default function AboutPage() {
                   </div>
                   <div className="p-6">
                   <div className="mb-4 flex justify-center">
-                  
+                
                   </div>
                     <div className="mb-4 flex justify-center">
                       <div className="flex h-16 w-16 items-center justify-center rounded-full bg-secondary/10">
                         <Shield className="h-8 w-8 text-secondary" />
-                      </div>
-                    </div>
+            </div>
+            </div>
                     <h3 className="mb-4 text-center text-2xl font-bold">Rexton – Trusted, Reliable, and Durable Solutions</h3>
                     <p className="text-center text-muted-foreground">
                       Our collaboration with Rexton allows us to deliver robust, dependable hearing solutions designed for daily performance and long-term reliability. With a strong reputation for durability, ease of use, and value, Rexton devices support individuals seeking effective technology they can trust in any condition.
                       Through this partnership, we ensure every patient receives solutions that balance practicality, quality, and comfort.
                     </p>
-                  </div>
+            </div>
                 </CardContent>
               </Card>
             </div>

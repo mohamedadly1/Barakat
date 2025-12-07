@@ -5,11 +5,9 @@ import type { SiteContent } from "@/lib/types"
 
 interface FooterProps {
   content: SiteContent["footer"]
-  isAdmin: boolean
-  onEdit?: (field: keyof SiteContent["footer"], value: string) => void
 }
 
-export function Footer({ content, isAdmin, onEdit }: FooterProps) {
+export function Footer({ content }: FooterProps) {
   return (
     <footer className="bg-card border-t border-border py-8 lg:py-12">
       <div className="container mx-auto px-4 lg:px-8">
@@ -20,20 +18,18 @@ export function Footer({ content, isAdmin, onEdit }: FooterProps) {
                 <span className="text-primary-foreground font-bold">H</span>
               </div>
               <EditableText
-                value={content.brandName}
-                onChange={(value) => onEdit?.("brandName", value)}
-                isAdmin={isAdmin}
+                contentKey="footer.brandName"
+                defaultValue={content.brandName}
+                as="span"
                 className="font-bold text-lg"
-                placeholder="Brand name"
               />
             </div>
             <EditableText
-              value={content.tagline}
-              onChange={(value) => onEdit?.("tagline", value)}
-              isAdmin={isAdmin}
+              contentKey="footer.tagline"
+              defaultValue={content.tagline}
+              as="p"
               className="text-sm text-muted-foreground"
               multiline
-              placeholder="Tagline"
             />
           </div>
 
@@ -118,11 +114,10 @@ export function Footer({ content, isAdmin, onEdit }: FooterProps) {
 
         <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
           <EditableText
-            value={content.copyright}
-            onChange={(value) => onEdit?.("copyright", value)}
-            isAdmin={isAdmin}
+            contentKey="footer.copyright"
+            defaultValue={content.copyright}
+            as="span"
             className="text-sm text-muted-foreground"
-            placeholder="Copyright text"
           />
         </div>
       </div>

@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic"; // prevents Next.js from running at build
-
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 

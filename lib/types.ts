@@ -1,12 +1,19 @@
 export interface Product {
   id: string
   name: string
+  brand?: string
   category: string
   description: string
   price: string
   image: string
   features: string[]
   is3D?: boolean
+  specifications?: {
+    batteryLife?: string
+    connectivity?: string
+    waterResistance?: string
+    colors?: string[]
+  }
 }
 
 export interface SiteContent {
@@ -61,6 +68,10 @@ export interface HearingTestQuestion {
   audioUrl?: string
   options: string[]
   correctAnswer: number
+  type?: "frequency" | "theoretical" | "speech" | "noise"
+  frequency?: string
+  ear?: string
+  instruction?: string
 }
 
 export interface HearingTestResult {
