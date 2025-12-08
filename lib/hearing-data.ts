@@ -137,13 +137,13 @@ export const hearingHealthInfo = {
 export const products = [
   {
     id: "pure-ric-1",
-    name: "Pure Charge&Go IX",
+    name: "Pure RIC",
     brand: "signia",
     category: "pure-ric",
     description:
-      "Experience natural sound with our most advanced RIC hearing aid featuring AI-powered sound processing.",
+      "Receiver-in-canal design for natural sound quality with premium Signia technology and all-day comfort.",
     price: "Contact for pricing",
-    image: "/images/sky-m-hook.avif",
+    image: "/images/Signia-Pure-Charge-Go-AX.png",
     features: [
       "Rechargeable with 28-hour battery life",
       "Bluetooth connectivity for calls and music",
@@ -161,12 +161,12 @@ export const products = [
   },
   {
     id: "styletto-1",
-    name: "Styletto AX",
+    name: "Styletto Slim RIC",
     brand: "signia",
     category: "styletto",
-    description: "Award-winning design meets cutting-edge technology in this ultra-slim hearing aid.",
+    description: "Ultra-slim, stylish RIC with premium performance and modern design.",
     price: "Contact for pricing",
-    image: "/images/slim-hearing-aid.avif",
+    image: "/images/signia-styletto-connect-black_pair.png",
     features: [
       "Ultra-slim and stylish design",
       "Portable charging case",
@@ -184,12 +184,12 @@ export const products = [
   },
   {
     id: "motion-1",
-    name: "Motion Charge&Go SP X",
+    name: "Motion",
     brand: "signia",
     category: "motion",
-    description: "Super power hearing aid with motion sensors for enhanced spatial awareness.",
+    description: "Rugged, powerful Signia Motion with durability and extended battery life.",
     price: "Contact for pricing",
-    image: "/images/charger-bte-sky-m.avif",
+    image: "/images/SIGNIA_MOTION_X.jpg",
     features: [
       "Motion sensor technology",
       "Super power for severe hearing loss",
@@ -207,12 +207,12 @@ export const products = [
   },
   {
     id: "intuis-1",
-    name: "Intuis 4 BTE",
+    name: "Other Hearing Aids",
     brand: "signia",
     category: "intuis",
-    description: "Simple, reliable, and easy-to-use behind-the-ear hearing aid.",
+    description: "Reliable Signia options beyond the core lineup, tailored to your needs.",
     price: "Contact for pricing",
-    image: "/images/bte-hearing-aids.jpg",
+    image: "/images/rs-rt-custom-line-up-scaled.jpg",
     features: [
       "Easy-to-use controls",
       "Long-lasting battery",
@@ -230,12 +230,12 @@ export const products = [
   },
   {
     id: "insio-1",
-    name: "Insio Charge&Go AX",
+    name: "Insio Custom",
     brand: "signia",
     category: "insio",
-    description: "Custom-molded in-ear hearing aid with wireless charging.",
+    description: "Custom-molded in-ear Signia solution for maximum discretion and comfort.",
     price: "Contact for pricing",
-    image: "/images/virto-titanium-case.jpeg",
+    image: "/images/Insio-IX_IIC_black_left_shadow_size-ratio_1920x1080.jpg",
     features: [
       "Custom-molded for perfect fit",
       "Rechargeable in-ear design",
@@ -253,12 +253,12 @@ export const products = [
   },
   {
     id: "silk-1",
-    name: "Silk Charge&Go IX",
+    name: "Silk",
     brand: "signia",
     category: "silk",
-    description: "Nearly invisible instant-fit hearing aid with rechargeable convenience.",
+    description: "Instant-fit, nearly invisible Signia Silk with rechargeable convenience.",
     price: "Contact for pricing",
-    image: "/images/panda-hearing-elite.webp",
+    image: "/images/Portable-Charger-Silk_top-open-with-Silk-ChGo-IX_LED-on_1920x1080.jpg",
     features: [
       "Nearly invisible design",
       "Instant fit - no custom mold needed",

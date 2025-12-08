@@ -30,10 +30,10 @@ export function HeroVideoSection() {
   return (
     <section className="relative overflow-visible">
       {/* Image background container */}
-      <div className="relative h-[420px] sm:h-[520px] md:h-[700px] lg:h-[900px] w-full overflow-hidden">
+      <div className="relative h-[420px] sm:h-[520px] md:h-[700px] lg:h-[800px] w-full overflow-hidden">
         <video
           className="h-full w-full object-cover"
-          src="/25H1-1102_SigniaIX_PureBCT_Tech_Video_FullHD_NEW.mp4"
+          src="/WhatsApp Video 2025-12-08 at 13.51.36 (1).mp4"
           autoPlay
           muted
           loop

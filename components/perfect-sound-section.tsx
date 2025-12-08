@@ -62,7 +62,7 @@ export function PerfectSoundSection() {
           <div className="relative rounded-lg overflow-hidden shadow-2xl">
             {/* Video Container */}
             <video ref={videoRef} className="w-full h-auto rounded-lg" autoPlay loop muted playsInline>
-              <source src="/240142-MMP_Sivantos_Pure_Charge&Go_BCT_IX_EN_highres.mp4" type="video/mp4" />
+              <source src="/WhatsApp Video 2025-12-08 at 13.51.36.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
 

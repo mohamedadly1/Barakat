@@ -10,7 +10,7 @@ import { EditableText } from "@/components/editable-text"
 // --- FIX: Added Award and CheckCircle here ---
 import { Ear, Heart, Shield, Users, ArrowRight, CheckCircle2, Award, CheckCircle } from "lucide-react"
 // ---------------------------------------------
-import { productCategories, brands } from "@/lib/hearing-data"
+import { productCategories, brands, products } from "@/lib/hearing-data"
 import { getStoredProducts, getSiteContent, getStoredBrands, addBrand, deleteBrand } from "@/lib/content-store"
 import { useEffect, useState } from "react"
 import { useAdminMode } from "@/lib/admin-mode-context"
@@ -37,7 +37,8 @@ export default function HomePage() {
 
   useEffect(() => {
     const storedProducts = getStoredProducts()
-    setAllProducts(storedProducts)
+    const mergedProducts = storedProducts.length > 0 ? storedProducts : products
+    setAllProducts(mergedProducts)
 
     const storedBrands = getStoredBrands()
     const mergedBrands = storedBrands.length > 0 ? storedBrands : brands
@@ -88,6 +89,12 @@ export default function HomePage() {
       setAllBrands(mergedBrands)
     }
   }
+
+  // Always use canonical Signia product data from hearing-data to keep images/names in sync with product pages
+  const featuredSigniaIds = ["pure-ric-1", "styletto-1", "motion-1", "insio-1", "silk-1", "intuis-1"]
+  const featuredSigniaProducts = featuredSigniaIds
+    .map((id) => products.find((p) => p.id === id))
+    .filter((p): p is (typeof products)[number] => Boolean(p))
 
   return (
     <main className="flex min-h-screen flex-col">
@@ -191,99 +198,69 @@ export default function HomePage() {
       </section>
 
       {/* Products Section */}
-      <section className="bg-muted/50 py-16 md:py-24">
-        <div className="container mx-auto max-w-7xl px-4">
-          <div className="mx-auto mb-12 max-w-2xl text-center">
-            <h2 className="mb-4 text-3xl font-bold md:text-4xl">
-              <EditableText contentKey="home.products.title" defaultValue="Our Products" as="span" />
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              <EditableText
-                contentKey="home.products.subtitle"
-                defaultValue="Discover a wide range of hearing aids and accessories designed to enhance your hearing experience."
-                as="span"
-                multiline
-              />
-            </p>
+   {/* Products Section */}
+   <section className="bg-muted/50 py-16 md:py-24">
+  <div className="container mx-auto max-w-7xl px-4">
+    <div className="mx-auto mb-12 max-w-2xl text-center">
+      <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+        Our Complete Hearing Solutions Range
+      </h2>
+      <p className="text-lg text-muted-foreground">
+        Explore our comprehensive range of six featured devices, accessories, and maintenance kits.
+      </p>
+    </div>
+
+    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {[...Array(6)].map((_, index) => (
+        <Card
+          key={index} 
+          className="group overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 animate-fade-in-up cursor-pointer"
+          style={{ animationDelay: `${index * 100}ms` }}
+        >
+          {/* --- KEY CHANGE: REMOVE ASPECT RATIO, ADD M-0 P-0 pt-0 --- */}
+          <div className="overflow-hidden relative m-0 p-0 pt-0"> 
+            <img
+              src={`/images/product-showcase-${index + 1}.jpg`} 
+              alt={`Static Product ${index + 1}`}
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           </div>
-          {allProducts.length > 0 ? (
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {allProducts.slice(0, 6).map((product, index) => (
-                <Card
-                  key={product.id}
-                  className="group overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 animate-fade-in-up cursor-pointer"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <div className="aspect-video overflow-hidden relative">
-                    <img
-                      src={product.image || "/placeholder.svg"}
-                      alt={product.name}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  </div>
-                  <CardContent className="p-6">
-                    <h3 className="mb-2 text-xl font-semibold transition-colors duration-300 group-hover:text-primary">
-                      {product.name}
-                    </h3>
-                    <p className="mb-4 text-muted-foreground line-clamp-2">{product.description}</p>
-                    <Button asChild variant="link" className="p-0 text-primary hover:text-primary/80 group/btn">
-                      <Link href={`/products/${product.id}`}>
-                        <EditableText contentKey="home.products.learnMoreButton" defaultValue="Learn More" as="span" />{" "}
-                        <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          ) : (
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {productCategories.slice(0, 6).map((category, index) => (
-                <Card
-                  key={category.id}
-                  className="group overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 animate-fade-in-up cursor-pointer"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <div className="aspect-video overflow-hidden relative">
-                    <img
-                      src={category.image || "/placeholder.svg"}
-                      alt={category.name}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  </div>
-                  <CardContent className="p-6">
-                    <h3 className="mb-2 text-xl font-semibold transition-colors duration-300 group-hover:text-primary">
-                      {category.name}
-                    </h3>
-                    <p className="mb-4 text-muted-foreground">{category.description}</p>
-                    <Button asChild variant="link" className="p-0 text-primary hover:text-primary/80 group/btn">
-                      <Link href={`/products/category/${category.id}`}>
-                        <EditableText contentKey="home.products.learnMoreButton" defaultValue="Learn More" as="span" />{" "}
-                        <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          )}
-          <div className="mt-8 text-center">
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="transition-all duration-300 hover:scale-105 hover:shadow-lg bg-transparent"
-            >
-              <Link href="/products">
-                <EditableText contentKey="home.products.viewAllButton" defaultValue="View All Products" as="span" />
+          
+          {/* CardContent keeps its padding (p-6) for text */}
+          <CardContent className="p-6">
+            <h3 className="mb-2 text-xl font-semibold transition-colors duration-300 group-hover:text-primary">
+              {index === 0 && "Signia Pure RIC"}
+              {index === 1 && "Signia Styletto Slim RIC"}
+              {index === 2 && "Signia Motion"}
+              {index === 3 && "Signia Insio Custom"}
+              {index === 4 && "Signia Silk"}
+              {index === 5 && "Intuis 4"}
+            </h3>
+            <p className="mb-4 text-muted-foreground line-clamp-2">
+              {index === 0 && "Our smallest, invisible-in-canal solution for discreet daily wear."}
+              {index === 1 && "Rechargeable, sleek design with enhanced natural sound processing."}
+              {index === 2 && "Ultra-slim, award-winning design with motion sensor technology."}
+              {index === 3 && "Long-lasting zinc-air batteries suitable for most BTE models."}
+              {index === 4 && "Automated sanitation and moisture removal for device longevity."}
+              {index === 5 && "Durable, shock-resistant case perfect for travel and storage."}
+            </p>
+            <Button asChild variant="link" className="p-0 text-primary hover:text-primary/80 group/btn">
+              <Link href="/booking">
+                Book Appointment To Test{" "}
+                <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
               </Link>
             </Button>
-          </div>
-        </div>
-      </section>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
 
+    <div className="mt-8 text-center">
+    
+    </div>
+  </div>
+</section>
       {/* Hearing Test Section */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto max-w-7xl px-4">
