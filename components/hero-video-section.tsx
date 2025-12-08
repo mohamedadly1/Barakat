@@ -2,7 +2,6 @@
 
 import Link from "next/link"
 import { Package, TestTube, Mail, Building2 } from "lucide-react"
-import Image from "next/image"
 
 export function HeroVideoSection() {
   const buttons = [
@@ -31,13 +30,14 @@ export function HeroVideoSection() {
   return (
     <section className="relative overflow-visible">
       {/* Image background container */}
-      <div className="relative h-96 md:h-[500px] lg:h-[600px] w-full overflow-hidden bg-black">
-        <Image
-          src="/images/hero-banner.png"
-          alt="Al-Barakat Hearing Care - Signia Hearing Aids"
-          fill
-          className="object-cover"
-          priority
+      <div className="relative h-[420px] sm:h-[520px] md:h-[700px] lg:h-[900px] w-full overflow-hidden">
+        <video
+          className="h-full w-full object-cover"
+          src="/25H1-1102_SigniaIX_PureBCT_Tech_Video_FullHD_NEW.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
         />
         {/* Gradient overlay for better button contrast */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20" />
