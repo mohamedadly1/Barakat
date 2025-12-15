@@ -8,7 +8,7 @@ export function HeroVideoSection() {
     {
       icon: Package,
       label: "Products",
-      href: "/products",
+      href: "/products/accessories-batteries",
     },
     {
       icon: TestTube,

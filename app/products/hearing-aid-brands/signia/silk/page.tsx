@@ -29,7 +29,7 @@ export default function SilkPage() {
           <div className="grid gap-12 md:grid-cols-2">
             <div>
               <img
-                src="/images/Portable-Charger-Silk_top-open-with-Silk-ChGo-IX_LED-on_1920x1080.jpg"
+                src="/images/product-showcase-5.jpg"
                 alt="Signia Silk"
                 className="rounded-lg shadow-lg"
               />

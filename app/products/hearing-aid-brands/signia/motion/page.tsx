@@ -29,7 +29,7 @@ export default function MotionPage() {
           <div className="grid gap-12 md:grid-cols-2">
             <div>
               <img
-                src="/images/SIGNIA_MOTION_X.jpg"
+                src="/images/product-showcase-3.jpg"
                 alt="Signia Motion"
                 className="rounded-lg shadow-lg"
               />

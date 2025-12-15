@@ -63,6 +63,22 @@ export function MainNavigation() {
   const [isAdmin, setIsAdmin] = useState(false)
   const [whatsappNumber, setWhatsappNumber] = useState("9668001248882")
   const [expandedSection, setExpandedSection] = useState<string | null>(null)
+// داخل MainNavigation component
+const [expandedMain, setExpandedMain] = useState<string | null>(null);
+const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
+
+// Toggle functions
+const toggleMain = (id: string, e: React.MouseEvent) => {
+  e.preventDefault();
+  e.stopPropagation();
+  setExpandedMain(prev => (prev === id ? null : id));
+};
+
+const toggleCategory = (id: string, e: React.MouseEvent) => {
+  e.preventDefault();
+  e.stopPropagation();
+  setExpandedCategory(prev => (prev === id ? null : id));
+};
 
   useEffect(() => {
     setIsAdmin(checkAdminAuth())
@@ -89,10 +105,10 @@ export function MainNavigation() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto max-w-7xl flex h-16 items-center gap-2 px-4">
-        <Link href="/" className="flex items-center gap-2 group flex-shrink-0">
+<div className="container mx-auto max-w-7xl flex h-16 items-center px-4">
+<Link href="/" className="flex items-center gap-2 group flex-shrink-0">
           {/* Logo container: Fixed non-standard Tailwind classes */}
-          <div className="relative h-10 w-32 transition-transform duration-300 group-hover:scale-110"> 
+          <div className="relative h-14 w-32 transition-transform duration-300 group-hover:scale-110"> 
             <Image
               src="/images/albarakal-logo (1).png"
               alt="Al-Barakat Hearing Care Center Logo"
@@ -105,8 +121,8 @@ export function MainNavigation() {
             <EditableText contentKey="nav.brandName" defaultValue="" as="span" />
           </span>
         </Link>
+        <NavigationMenu className="hidden xl:flex ml-auto flex-1 justify-center">
 
-        <NavigationMenu className="hidden xl:flex flex-1 justify-center">
           <NavigationMenuList className="gap-1">
             <NavigationMenuItem>
               <NavigationMenuTrigger className="transition-colors duration-300">
@@ -302,9 +318,9 @@ export function MainNavigation() {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
+        <div className="ml-auto flex items-center gap-1 sm:gap-2 flex-shrink-0">
 
-        <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
-          {isAdmin ? (
+           {isAdmin ? (
             <Button
               asChild
               variant="ghost"
@@ -466,135 +482,121 @@ export function MainNavigation() {
                       </div>
                     </div>
 
-                    {/* Products Section - FIX APPLIED: Changed ID from "products" to "products-menu" */}
-                    <div className="rounded-xl border border-border/50 overflow-hidden bg-card/50 backdrop-blur-sm">
-                      <button
-                        onClick={(e) => toggleSection("products-menu", e)} // FIXED ID
-                        className="w-full flex items-center justify-between p-4 hover:bg-accent/10 transition-colors"
-                      >
-                        <div className="flex items-center gap-3">
-                          <Ear className="h-5 w-5 text-secondary" />
-                          <span className="font-semibold">Products & Accessories</span>
-                        </div>
-                        <ChevronRight
-                          className={cn(
-                            "h-5 w-5 text-muted-foreground transition-transform duration-300",
-                            expandedSection === "products-menu" && "rotate-90", // FIXED ID
-                          )}
-                        />
-                      </button>
-                      <div
-                        className={cn(
-                          "overflow-hidden transition-all duration-300 ease-in-out",
-                          expandedSection === "products-menu" ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0", // FIXED ID
-                        )}
-                      >
-                        <div className="p-2 space-y-1 bg-accent/5">
-                          <h5 className="text-xs font-semibold uppercase text-muted-foreground tracking-wider p-3">Categories</h5>
+               {/* Products Section */}
+<div className="rounded-xl border border-border/50 overflow-hidden bg-card/50 backdrop-blur-sm">
+  <button
+    onClick={(e) => toggleMain("products-menu", e)}
+    className="w-full flex items-center justify-between p-4 hover:bg-accent/10 transition-colors"
+  >
+    <div className="flex items-center gap-3">
+      <Ear className="h-5 w-5 text-secondary" />
+      <span className="font-semibold">Products & Accessories</span>
+    </div>
+    <ChevronRight
+      className={cn(
+        "h-5 w-5 text-muted-foreground transition-transform duration-300",
+        expandedMain === "products-menu" && "rotate-90"
+      )}
+    />
+  </button>
 
-                          {productsMenuStructure.categories.map((category) => {
-                            const hasSubItems = category.submenu || category.items;
-                            const isCategoryExpanded = expandedSection === category.id;
-                            
-                            if (hasSubItems) {
-                              // Category with nested items (Brands, Technology) - These use their own unique IDs for toggle
-                              return (
-                                <div 
-                                  key={category.id} 
-                                  className="w-full border-b border-border/20 last:border-b-0"
-                                  onClick={(e) => {
-                                    // Stop propagation to prevent closing the sheet
-                                    e.stopPropagation()
-                                  }}
-                                >
-                                  <button
-                                    type="button"
-                                    data-expandable="true"
-                                    onClick={(e) => {
-                                      e.preventDefault()
-                                      e.stopPropagation()
-                                      toggleSection(category.id, e)
-                                    }}
-                                    className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-accent/20 transition-all duration-200 group"
-                                  >
-                                    <div className="flex items-center gap-3">
-                                      {categoryIconMap[category.icon as string] || <div className="h-4 w-4" />}
-                                      <span className="text-sm font-medium">{category.label}</span>
-                                    </div>
-                                    <ChevronRight
-                                      className={cn(
-                                        "h-4 w-4 text-muted-foreground transition-transform duration-300",
-                                        isCategoryExpanded && "rotate-90",
-                                      )}
-                                    />
-                                  </button>
+  <div
+    className={cn(
+      "overflow-hidden transition-all duration-300 ease-in-out",
+      expandedMain === "products-menu" ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
+    )}
+  >
+    <div className="p-2 space-y-1 bg-accent/5">
+      <h5 className="text-xs font-semibold uppercase text-muted-foreground tracking-wider p-3">
+        Categories
+      </h5>
 
-                                  {/* Sub-Items Container - This will now appear correctly */}
-                                  <div
-                                    className={cn(
-                                      "overflow-hidden transition-all duration-300 ease-in-out",
-                                      isCategoryExpanded 
-                                        ? "max-h-[600px] opacity-100 pointer-events-auto" 
-                                        : "max-h-0 opacity-0 pointer-events-none"
-                                    )}
-                                  >
-                                    <div className="ml-6 p-2 space-y-1 bg-accent/10 rounded-b-lg">
-                                      {/* Mapping over Submenu (Brands structure) */}
-                                      {category.submenu?.map((brand) => (
-                                        <React.Fragment key={brand.id}>
-                                          <h6 className="text-xs font-semibold pt-2 text-primary/80 ml-1">{brand.label}</h6>
-                                          {brand.items?.map((item) => (
-                                            <Link
-                                              key={item.id}
-                                              href={item.href}
-                                              onClick={() => setIsOpen(false)}
-                                              className="flex items-center gap-3 p-2 rounded-lg hover:bg-accent/30 transition-all duration-200 group"
-                                            >
-                                              <div className="h-1.5 w-1.5 rounded-full bg-secondary" />
-                                              <span className="text-xs">{item.label}</span>
-                                            </Link>
-                                          ))}
-                                        </React.Fragment>
-                                      ))}
+      {productsMenuStructure.categories.map((category) => {
+        const hasSubItems = category.submenu || category.items;
+        const isCategoryExpanded = expandedCategory === category.id;
 
-                                      {/* Mapping over simple Items (Technology structure) */}
-                                      {category.items?.map((item) => (
-                                        <Link
-                                          key={item.id}
-                                          href={item.href}
-                                          onClick={() => setIsOpen(false)}
-                                          className="flex items-center gap-3 p-2 rounded-lg hover:bg-accent/30 transition-all duration-200 group"
-                                        >
-                                          <div className="h-1.5 w-1.5 rounded-full bg-secondary" />
-                                          <span className="text-xs">{item.label}</span>
-                                        </Link>
-                                      ))}
-                                    </div>
-                                  </div>
-                                </div>
-                              );
-                            }
+        if (hasSubItems) {
+          return (
+            <div key={category.id} className="w-full border-b border-border/20 last:border-b-0">
+              <button
+                type="button"
+                onClick={(e) => toggleCategory(category.id, e)}
+                className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-accent/20 transition-all duration-200 group"
+              >
+                <div className="flex items-center gap-3">
+                  {categoryIconMap[category.icon as string] || <div className="h-4 w-4" />}
+                  <span className="text-sm font-medium">{category.label}</span>
+                </div>
+                <ChevronRight
+                  className={cn(
+                    "h-4 w-4 text-muted-foreground transition-transform duration-300",
+                    isCategoryExpanded && "rotate-90"
+                  )}
+                />
+              </button>
 
-                            // Simple link category (Category, Tinnitus, Accessories)
-                            return (
-                              <Link
-                                key={category.id}
-                                href={category.href || "/products"}
-                                onClick={() => setIsOpen(false)}
-                                className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-accent/20 transition-all duration-200 group"
-                              >
-                                <div className="flex items-center gap-3">
-                                  {categoryIconMap[category.icon as string] || <div className="h-4 w-4" />}
-                                  <span className="text-sm font-medium">{category.label}</span>
-                                </div>
-                                {/* Removed ChevronRight here, as these are direct links */}
-                              </Link>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    </div>
-                    {/* End of Products Section */}
+              <div
+                className={cn(
+                  "overflow-hidden transition-all duration-300 ease-in-out",
+                  isCategoryExpanded
+                    ? "max-h-[600px] opacity-100 pointer-events-auto"
+                    : "max-h-0 opacity-0 pointer-events-none"
+                )}
+              >
+                <div className="ml-6 p-2 space-y-1 bg-accent/10 rounded-b-lg">
+                  {category.submenu?.map((brand) => (
+                    <React.Fragment key={brand.id}>
+                      <h6 className="text-xs font-semibold pt-2 text-primary/80 ml-1">{brand.label}</h6>
+                      {brand.items?.map((item) => (
+                        <Link
+                          key={item.id}
+                          href={item.href}
+                          onClick={() => setIsOpen(false)}
+                          className="flex items-center gap-3 p-2 rounded-lg hover:bg-accent/30 transition-all duration-200 group"
+                        >
+                          <div className="h-1.5 w-1.5 rounded-full bg-secondary" />
+                          <span className="text-xs">{item.label}</span>
+                        </Link>
+                      ))}
+                    </React.Fragment>
+                  ))}
+
+                  {category.items?.map((item) => (
+                    <Link
+                      key={item.id}
+                      href={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-center gap-3 p-2 rounded-lg hover:bg-accent/30 transition-all duration-200 group"
+                    >
+                      <div className="h-1.5 w-1.5 rounded-full bg-secondary" />
+                      <span className="text-xs">{item.label}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          );
+        }
+
+        return (
+          <Link
+            key={category.id}
+            href={category.href || "/products"}
+            onClick={() => setIsOpen(false)}
+            className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-accent/20 transition-all duration-200 group"
+          >
+            <div className="flex items-center gap-3">
+              {categoryIconMap[category.icon as string] || <div className="h-4 w-4" />}
+              <span className="text-sm font-medium">{category.label}</span>
+            </div>
+          </Link>
+        );
+      })}
+    </div>
+  </div>
+</div>
+{/* End Products Section */}
+
 
                     {/* Company Section */}
                     <div className="rounded-xl border border-border/50 overflow-hidden bg-card/50 backdrop-blur-sm">

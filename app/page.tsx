@@ -26,6 +26,50 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { PerfectSoundSection } from "@/components/perfect-sound-section"
+const featuredProducts = [
+  {
+    id: "pure-ric",
+    name: "Signia Pure RIC",
+    slug: "pure-ric",
+    image: "/images/product-showcase-1.jpg",
+    description: "Our smallest, invisible-in-canal solution for discreet daily wear.",
+  },
+  {
+    id: "styletto",
+    name: "Signia Styletto Slim RIC",
+    slug: "styletto-slim-ric",
+    image: "/images/product-showcase-2.jpg",
+    description: "Rechargeable, sleek design with enhanced natural sound processing.",
+  },
+  {
+    id: "motion",
+    name: "Signia Motion",
+    slug: "motion",
+    image: "/images/product-showcase-3.jpg",
+    description: "Ultra-slim, award-winning design with motion sensor technology.",
+  },
+  {
+    id: "insio",
+    name: "Signia Insio Custom",
+    slug: "insio-custom",
+    image: "/images/product-showcase-4.jpg",
+    description: "Custom-made hearing aids designed for comfort and performance.",
+  },
+  {
+    id: "silk",
+    name: "Signia Silk",
+    slug: "silk",
+    image: "/images/product-showcase-5.jpg",
+    description: "Instant-fit, discreet hearing aids with natural sound quality.",
+  },
+  {
+    id: "intuis",
+    name: "Intuis 4",
+    slug: "motion",
+    image: "/images/product-showcase-6.jpg",
+    description: "Reliable and easy-to-use hearing solution with durable design.",
+  },
+]
 
 export default function HomePage() {
   const [allProducts, setAllProducts] = useState<any[]>([])
@@ -75,7 +119,7 @@ export default function HomePage() {
       setShowAddBrandDialog(false)
       // Refresh brands
       const storedBrands = getStoredBrands()
-      const mergedBrands = storedBrands.length > 0 ? storedBrands : brands
+      const mergedBrands = storedBrands.length > 0 ? storedBrands : brands  
       setAllBrands(mergedBrands)
     }
   }
@@ -211,50 +255,41 @@ export default function HomePage() {
     </div>
 
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {[...Array(6)].map((_, index) => (
-        <Card
-          key={index} 
-          className="group overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 animate-fade-in-up cursor-pointer"
-          style={{ animationDelay: `${index * 100}ms` }}
-        >
-          {/* --- KEY CHANGE: REMOVE ASPECT RATIO, ADD M-0 P-0 pt-0 --- */}
-          <div className="overflow-hidden relative m-0 p-0 pt-0"> 
-            <img
-              src={`/images/product-showcase-${index + 1}.jpg`} 
-              alt={`Static Product ${index + 1}`}
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-          </div>
-          
-          {/* CardContent keeps its padding (p-6) for text */}
-          <CardContent className="p-6">
-            <h3 className="mb-2 text-xl font-semibold transition-colors duration-300 group-hover:text-primary">
-              {index === 0 && "Signia Pure RIC"}
-              {index === 1 && "Signia Styletto Slim RIC"}
-              {index === 2 && "Signia Motion"}
-              {index === 3 && "Signia Insio Custom"}
-              {index === 4 && "Signia Silk"}
-              {index === 5 && "Intuis 4"}
-            </h3>
-            <p className="mb-4 text-muted-foreground line-clamp-2">
-              {index === 0 && "Our smallest, invisible-in-canal solution for discreet daily wear."}
-              {index === 1 && "Rechargeable, sleek design with enhanced natural sound processing."}
-              {index === 2 && "Ultra-slim, award-winning design with motion sensor technology."}
-              {index === 3 && "Long-lasting zinc-air batteries suitable for most BTE models."}
-              {index === 4 && "Automated sanitation and moisture removal for device longevity."}
-              {index === 5 && "Durable, shock-resistant case perfect for travel and storage."}
-            </p>
-            <Button asChild variant="link" className="p-0 text-primary hover:text-primary/80 group/btn">
-              <Link href="/booking">
-                Book Appointment To Test{" "}
-                <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-              </Link>
-            </Button>
-          </CardContent>
-        </Card>
-      ))}
-    </div>
+  {featuredProducts.map((product, index) => (
+    <Card
+      key={product.id}
+      className="group overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 animate-fade-in-up cursor-pointer"
+      style={{ animationDelay: `${index * 100}ms` }}
+    >
+      <div className="relative overflow-hidden">
+        <img
+          src={product.image}
+          alt={product.name}
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      </div>
+
+      <CardContent className="p-6">
+        <h3 className="mb-2 text-xl font-semibold group-hover:text-primary transition-colors">
+          {product.name}
+        </h3>
+
+        <p className="mb-4 text-muted-foreground line-clamp-2">
+          {product.description}
+        </p>
+
+        <Button asChild variant="link" className="p-0 text-primary group/btn">
+          <Link href={`/products/hearing-aid-brands/signia/${product.slug}`}>
+            See More
+            <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+          </Link>
+        </Button>
+      </CardContent>
+    </Card>
+  ))}
+</div>
+
 
     <div className="mt-8 text-center">
     
