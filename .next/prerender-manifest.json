@@ -266,6 +266,78 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/hearing-health/hearing-loss/causes-of-hearing-loss": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/hearing-health/hearing-loss/causes-of-hearing-loss",
+      "dataRoute": "/hearing-health/hearing-loss/causes-of-hearing-loss.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/hearing-health/hearing-loss/hearing-loss-in-adults": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/hearing-health/hearing-loss/hearing-loss-in-adults",
+      "dataRoute": "/hearing-health/hearing-loss/hearing-loss-in-adults.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/hearing-health/hearing-loss/hearing-loss-in-child": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/hearing-health/hearing-loss/hearing-loss-in-child",
+      "dataRoute": "/hearing-health/hearing-loss/hearing-loss-in-child.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/hearing-health/hearing-loss": {
       "experimentalBypassFor": [
         {
@@ -281,6 +353,54 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/hearing-health/hearing-loss",
       "dataRoute": "/hearing-health/hearing-loss.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/hearing-health/hearing-loss/signs-of-hearing-loss": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/hearing-health/hearing-loss/signs-of-hearing-loss",
+      "dataRoute": "/hearing-health/hearing-loss/signs-of-hearing-loss.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/hearing-health/hearing-loss/types-of-hearing-loss": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/hearing-health/hearing-loss/types-of-hearing-loss",
+      "dataRoute": "/hearing-health/hearing-loss/types-of-hearing-loss.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",

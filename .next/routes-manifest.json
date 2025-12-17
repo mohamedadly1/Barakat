@@ -128,6 +128,36 @@
       "namedRegex": "^/hearing\\-health/hearing\\-loss(?:/)?$"
     },
     {
+      "page": "/hearing-health/hearing-loss/causes-of-hearing-loss",
+      "regex": "^/hearing\\-health/hearing\\-loss/causes\\-of\\-hearing\\-loss(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/hearing\\-health/hearing\\-loss/causes\\-of\\-hearing\\-loss(?:/)?$"
+    },
+    {
+      "page": "/hearing-health/hearing-loss/hearing-loss-in-adults",
+      "regex": "^/hearing\\-health/hearing\\-loss/hearing\\-loss\\-in\\-adults(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/hearing\\-health/hearing\\-loss/hearing\\-loss\\-in\\-adults(?:/)?$"
+    },
+    {
+      "page": "/hearing-health/hearing-loss/hearing-loss-in-child",
+      "regex": "^/hearing\\-health/hearing\\-loss/hearing\\-loss\\-in\\-child(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/hearing\\-health/hearing\\-loss/hearing\\-loss\\-in\\-child(?:/)?$"
+    },
+    {
+      "page": "/hearing-health/hearing-loss/signs-of-hearing-loss",
+      "regex": "^/hearing\\-health/hearing\\-loss/signs\\-of\\-hearing\\-loss(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/hearing\\-health/hearing\\-loss/signs\\-of\\-hearing\\-loss(?:/)?$"
+    },
+    {
+      "page": "/hearing-health/hearing-loss/types-of-hearing-loss",
+      "regex": "^/hearing\\-health/hearing\\-loss/types\\-of\\-hearing\\-loss(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/hearing\\-health/hearing\\-loss/types\\-of\\-hearing\\-loss(?:/)?$"
+    },
+    {
       "page": "/hearing-health/how-we-hear",
       "regex": "^/hearing\\-health/how\\-we\\-hear(?:/)?$",
       "routeKeys": {},

@@ -1,4 +1,4 @@
-"use client"
+ "use client"
 
 // 1. Consolidated React Imports
 import React, { useState, useEffect } from "react" 
@@ -17,7 +17,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
 
-// 3. Lucide Icons Imports (All necessary icons consolidated here)
+// 3. Consolidated Lucide Icons Imports (Removed duplicates)
 import {
   Menu,
   Calendar,
@@ -30,13 +30,14 @@ import {
   HelpCircle,
   Building,
   ChevronRight,
+  ChevronDown, // Added for your dropdown
   Home,
   X,
-  Zap, // For Technology Icon
-  Volume2, // For Tinnitus Icon
-  Grid3x3, // For Category Icon
-  Tag, // For Brands Icon
-  Battery, // For Accessories Icon
+  Zap, 
+  Volume2, 
+  Grid3x3, 
+  Tag, 
+  Battery, 
   Mail,
   MessageCircle,
 } from "lucide-react"
@@ -63,28 +64,29 @@ export function MainNavigation() {
   const [isAdmin, setIsAdmin] = useState(false)
   const [whatsappNumber, setWhatsappNumber] = useState("9668001248882")
   const [expandedSection, setExpandedSection] = useState<string | null>(null)
-// داخل MainNavigation component
-const [expandedMain, setExpandedMain] = useState<string | null>(null);
-const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
+  
+  // States for the new dropdowns
+  const [hearingLossOpen, setHearingLossOpen] = useState(false)
+  const [expandedMain, setExpandedMain] = useState<string | null>(null)
+  const [expandedCategory, setExpandedCategory] = useState<string | null>(null)
 
-// Toggle functions
-const toggleMain = (id: string, e: React.MouseEvent) => {
-  e.preventDefault();
-  e.stopPropagation();
-  setExpandedMain(prev => (prev === id ? null : id));
-};
+  // Toggle functions
+  const toggleMain = (id: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setExpandedMain(prev => (prev === id ? null : id));
+  };
 
-const toggleCategory = (id: string, e: React.MouseEvent) => {
-  e.preventDefault();
-  e.stopPropagation();
-  setExpandedCategory(prev => (prev === id ? null : id));
-};
+  const toggleCategory = (id: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setExpandedCategory(prev => (prev === id ? null : id));
+  };
 
   useEffect(() => {
     setIsAdmin(checkAdminAuth())
     setWhatsappNumber(getEditableContent("contact.whatsappNumber", "9668001248882"))
 
-    // Listen for content updates
     const handleContentUpdate = () => {
       setWhatsappNumber(getEditableContent("contact.whatsappNumber", "9668001248882"))
     }
@@ -95,12 +97,9 @@ const toggleCategory = (id: string, e: React.MouseEvent) => {
   const toggleSection = (section: string, e?: React.MouseEvent) => {
     if (e) {
       e.preventDefault()
-      e.stopPropagation() // Prevent event bubbling
+      e.stopPropagation()
     }
-    setExpandedSection((prev) => {
-      // If clicking the same section, close it. Otherwise, open the new one
-      return prev === section ? null : section
-    })
+    setExpandedSection((prev) => (prev === section ? null : section))
   }
 
   return (
@@ -156,7 +155,8 @@ const toggleCategory = (id: string, e: React.MouseEvent) => {
                   </li>
                   <ListItem
                     href="/hearing-health/how-we-hear"
-                    title={<EditableText contentKey="nav.howWeHearTitle" defaultValue="How We Hear" as="span" />}
+                    title={<EditableText contentKey="nav.howWeHearTitle" defaultValue="How Hearing Works
+                      " as="span" />}
                     icon={
                       <Ear className="h-5 w-5 text-primary transition-transform duration-300 group-hover:scale-110" />
                     }
@@ -167,15 +167,60 @@ const toggleCategory = (id: string, e: React.MouseEvent) => {
                       as="span"
                     />
                   </ListItem>
-                  <ListItem
-                    href="/hearing-health/hearing-loss"
-                    title={<EditableText contentKey="nav.hearingLossTitle" defaultValue="Hearing Loss" as="span" />}
-                    icon={
-                      <Stethoscope className="h-5 w-5 text-secondary transition-transform duration-300 group-hover:scale-110" />
-                    }
-                  >
-                    <EditableText contentKey="nav.hearingLossDesc" defaultValue="Types, causes, and signs" as="span" />
-                  </ListItem>
+             {/* Hearing Loss Dropdown Item */}
+<div className="flex flex-col">
+  <button
+    onClick={(e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setHearingLossOpen(!hearingLossOpen);
+    }}
+    className="group flex w-full select-none items-start gap-3 rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
+  >
+    <Stethoscope className="h-5 w-5 text-secondary transition-transform duration-300 group-hover:scale-110" />
+    <div className="flex flex-1 flex-col text-left">
+      <div className="flex items-center justify-between">
+        <span className="text-sm font-medium leading-none">
+          <EditableText contentKey="nav.hearingLossTitle" defaultValue="Hearing Loss" as="span" />
+        </span>
+        <ChevronDown 
+          className={`h-4 w-4 text-muted-foreground transition-transform duration-300 ${
+            hearingLossOpen ? "rotate-180" : ""
+          }`} 
+        />
+      </div>
+      <p className="mt-1 text-sm leading-snug text-muted-foreground">
+        <EditableText contentKey="nav.hearingLossDesc" defaultValue="Types, causes, and signs" as="span" />
+      </p>
+    </div>
+  </button>
+
+  {/* Animated Sub-links Area */}
+  <div
+    className={`overflow-hidden transition-all duration-300 ease-in-out ${
+      hearingLossOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
+    }`}
+  >
+    <ul className="ml-9 mt-1 flex flex-col gap-1 border-l-2 border-secondary/20 pl-4">
+      {[
+        { href: "/hearing-health/hearing-loss/signs-of-hearing-loss", label: "Signs of hearing loss" },
+        { href: "/hearing-health/hearing-loss/causes-of-hearing-loss", label: "Causes of hearing loss" },
+        { href: "/hearing-health/hearing-loss/types-of-hearing-loss", label: "Types of hearing loss" },
+        { href: "/hearing-health/hearing-loss/hearing-loss-in-adults", label: "Hearing loss in adults" },
+        { href: "/hearing-health/hearing-loss/hearing-loss-in-child", label: "Hearing loss in Child" },
+      ].map((item, index) => (
+        <li key={index}>
+          <Link
+            href={item.href}
+            className="block py-2 text-sm text-muted-foreground transition-colors duration-200 hover:text-secondary hover:translate-x-1 transform"
+          >
+            {item.label}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
                   <ListItem
                     href="/hearing-health/tinnitus"
                     title={<EditableText contentKey="nav.tinnitusTitle" defaultValue="Tinnitus" as="span" />}
@@ -460,16 +505,61 @@ const toggleCategory = (id: string, e: React.MouseEvent) => {
                             className="flex items-center gap-3 p-3 rounded-lg hover:bg-accent/20 transition-all duration-200 group"
                           >
                             <div className="h-2 w-2 rounded-full bg-primary group-hover:scale-150 transition-transform" />
-                            <span className="text-sm">How We Hear</span>
+                            <span className="text-sm">How Hearing Works
+                            </span>
                           </Link>
-                          <Link
-                            href="/hearing-health/hearing-loss"
-                            onClick={() => setIsOpen(false)}
-                            className="flex items-center gap-3 p-3 rounded-lg hover:bg-accent/20 transition-all duration-200 group"
-                          >
-                            <div className="h-2 w-2 rounded-full bg-secondary group-hover:scale-150 transition-transform" />
-                            <span className="text-sm">Hearing Loss</span>
-                          </Link>
+                          <div className="flex flex-col">
+  <button
+    onClick={(e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setHearingLossOpen(!hearingLossOpen);
+    }}
+    className="group flex w-full select-none items-start gap-3 rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
+  >
+                                <div className="h-2 w-2 rounded-full bg-primary group-hover:scale-150 transition-transform" />
+
+     <div className="flex flex-1 flex-col text-left">
+      <div className="flex items-center justify-between">
+        <span className="text-sm font-medium leading-none">
+          <EditableText contentKey="nav.hearingLossTitle" defaultValue="Hearing Loss" as="span" />
+        </span>
+        <ChevronDown 
+          className={`h-4 w-4 text-muted-foreground transition-transform duration-300 ${
+            hearingLossOpen ? "rotate-180" : ""
+          }`} 
+        />
+      </div>
+    
+    </div>
+  </button>
+
+  {/* Animated Sub-links Area */}
+  <div
+    className={`overflow-hidden transition-all duration-300 ease-in-out ${
+      hearingLossOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
+    }`}
+  >
+    <ul className="ml-9 mt-1 flex flex-col gap-1 border-l-2 border-secondary/20 pl-4">
+      {[
+        { href: "/hearing-health/hearing-loss/signs-of-hearing-loss", label: "Signs of hearing loss" },
+        { href: "/hearing-health/hearing-loss/causes-of-hearing-loss", label: "Causes of hearing loss" },
+        { href: "/hearing-health/hearing-loss/types-of-hearing-loss", label: "Types of hearing loss" },
+        { href: "/hearing-health/hearing-loss/hearing-loss-in-adults", label: "Hearing loss in adults" },
+        { href: "/hearing-health/hearing-loss/hearing-loss-in-child", label: "Hearing loss in Child" },
+      ].map((item, index) => (
+        <li key={index}>
+          <Link
+            href={item.href}
+            className="block py-2 text-sm text-muted-foreground transition-colors duration-200 hover:text-secondary hover:translate-x-1 transform"
+          >
+            {item.label}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
                           <Link
                             href="/hearing-health/tinnitus"
                             onClick={() => setIsOpen(false)}

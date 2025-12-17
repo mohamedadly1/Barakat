@@ -128,10 +128,55 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../app/hearing-health/hearing-loss/causes-of-hearing-loss/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/hearing-health/hearing-loss/causes-of-hearing-loss">> = Specific
+  const handler = {} as typeof import("../../app/hearing-health/hearing-loss/causes-of-hearing-loss/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../app/hearing-health/hearing-loss/hearing-loss-in-adults/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/hearing-health/hearing-loss/hearing-loss-in-adults">> = Specific
+  const handler = {} as typeof import("../../app/hearing-health/hearing-loss/hearing-loss-in-adults/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../app/hearing-health/hearing-loss/hearing-loss-in-child/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/hearing-health/hearing-loss/hearing-loss-in-child">> = Specific
+  const handler = {} as typeof import("../../app/hearing-health/hearing-loss/hearing-loss-in-child/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../app/hearing-health/hearing-loss/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/hearing-health/hearing-loss">> = Specific
   const handler = {} as typeof import("../../app/hearing-health/hearing-loss/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../app/hearing-health/hearing-loss/signs-of-hearing-loss/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/hearing-health/hearing-loss/signs-of-hearing-loss">> = Specific
+  const handler = {} as typeof import("../../app/hearing-health/hearing-loss/signs-of-hearing-loss/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../app/hearing-health/hearing-loss/types-of-hearing-loss/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/hearing-health/hearing-loss/types-of-hearing-loss">> = Specific
+  const handler = {} as typeof import("../../app/hearing-health/hearing-loss/types-of-hearing-loss/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
