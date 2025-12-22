@@ -218,6 +218,24 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../app/hearing-health/tinnitus/symptoms-causes/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/hearing-health/tinnitus/symptoms-causes">> = Specific
+  const handler = {} as typeof import("../../app/hearing-health/tinnitus/symptoms-causes/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../app/hearing-health/tinnitus/tinnitus-therapy/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/hearing-health/tinnitus/tinnitus-therapy">> = Specific
+  const handler = {} as typeof import("../../app/hearing-health/tinnitus/tinnitus-therapy/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../app/hearing-test/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/hearing-test">> = Specific

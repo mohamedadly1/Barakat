@@ -38,6 +38,7 @@ import {
   Grid3x3, 
   Tag, 
   Battery, 
+  BellRing, // <--- Add this here
   Mail,
   MessageCircle,
 } from "lucide-react"
@@ -64,7 +65,7 @@ export function MainNavigation() {
   const [isAdmin, setIsAdmin] = useState(false)
   const [whatsappNumber, setWhatsappNumber] = useState("9668001248882")
   const [expandedSection, setExpandedSection] = useState<string | null>(null)
-  
+  const [tinnitusOpen, setTinnitusOpen] = useState(false);
   // States for the new dropdowns
   const [hearingLossOpen, setHearingLossOpen] = useState(false)
   const [expandedMain, setExpandedMain] = useState<string | null>(null)
@@ -168,68 +169,124 @@ export function MainNavigation() {
                     />
                   </ListItem>
              {/* Hearing Loss Dropdown Item */}
-<div className="flex flex-col">
-  <button
-    onClick={(e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      setHearingLossOpen(!hearingLossOpen);
-    }}
-    className="group flex w-full select-none items-start gap-3 rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
-  >
-    <Stethoscope className="h-5 w-5 text-secondary transition-transform duration-300 group-hover:scale-110" />
-    <div className="flex flex-1 flex-col text-left">
-      <div className="flex items-center justify-between">
-        <span className="text-sm font-medium leading-none">
-          <EditableText contentKey="nav.hearingLossTitle" defaultValue="Hearing Loss" as="span" />
-        </span>
-        <ChevronDown 
-          className={`h-4 w-4 text-muted-foreground transition-transform duration-300 ${
-            hearingLossOpen ? "rotate-180" : ""
-          }`} 
-        />
+  <div className="flex flex-col">
+    <button
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setHearingLossOpen(!hearingLossOpen);
+      }}
+      className="group flex w-full select-none items-start gap-3 rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
+    >
+      <Stethoscope className="h-5 w-5 text-secondary transition-transform duration-300 group-hover:scale-110" />
+      <div className="flex flex-1 flex-col text-left">
+        <div className="flex items-center justify-between">
+          <span className="text-sm font-medium leading-none">
+            <EditableText contentKey="nav.hearingLossTitle" defaultValue="Hearing Loss" as="span" />
+          </span>
+          <ChevronDown 
+            className={`h-4 w-4 text-muted-foreground transition-transform duration-300 ${
+              hearingLossOpen ? "rotate-180" : ""
+            }`} 
+          />
+        </div>
+        <p className="mt-1 text-sm leading-snug text-muted-foreground">
+          <EditableText contentKey="nav.hearingLossDesc" defaultValue="Types, causes, and signs" as="span" />
+        </p>
       </div>
-      <p className="mt-1 text-sm leading-snug text-muted-foreground">
-        <EditableText contentKey="nav.hearingLossDesc" defaultValue="Types, causes, and signs" as="span" />
-      </p>
-    </div>
-  </button>
+    </button>
 
-  {/* Animated Sub-links Area */}
-  <div
-    className={`overflow-hidden transition-all duration-300 ease-in-out ${
-      hearingLossOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
-    }`}
-  >
-    <ul className="ml-9 mt-1 flex flex-col gap-1 border-l-2 border-secondary/20 pl-4">
-      {[
-        { href: "/hearing-health/hearing-loss/signs-of-hearing-loss", label: "Signs of hearing loss" },
-        { href: "/hearing-health/hearing-loss/causes-of-hearing-loss", label: "Causes of hearing loss" },
-        { href: "/hearing-health/hearing-loss/types-of-hearing-loss", label: "Types of hearing loss" },
-        { href: "/hearing-health/hearing-loss/hearing-loss-in-adults", label: "Hearing loss in adults" },
-        { href: "/hearing-health/hearing-loss/hearing-loss-in-child", label: "Hearing loss in Child" },
-      ].map((item, index) => (
-        <li key={index}>
-          <Link
-            href={item.href}
-            className="block py-2 text-sm text-muted-foreground transition-colors duration-200 hover:text-secondary hover:translate-x-1 transform"
-          >
-            {item.label}
-          </Link>
-        </li>
-      ))}
-    </ul>
+    {/* Animated Sub-links Area */}
+    <div
+      className={`overflow-hidden transition-all duration-300 ease-in-out ${
+        hearingLossOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
+      }`}
+    >
+      <ul className="ml-9 mt-1 flex flex-col gap-1 border-l-2 border-secondary/20 pl-4">
+        {[
+          { href: "/hearing-health/hearing-loss/signs-of-hearing-loss", label: "Signs of hearing loss" },
+          { href: "/hearing-health/hearing-loss/causes-of-hearing-loss", label: "Causes of hearing loss" },
+          { href: "/hearing-health/hearing-loss/types-of-hearing-loss", label: "Types of hearing loss" },
+          { href: "/hearing-health/hearing-loss/hearing-loss-in-adults", label: "Hearing loss in adults" },
+          { href: "/hearing-health/hearing-loss/hearing-loss-in-child", label: "Hearing loss in Child" },
+        ].map((item, index) => (
+          <li key={index}>
+            <Link
+              href={item.href}
+              className="block py-2 text-sm text-muted-foreground transition-colors duration-200 hover:text-secondary hover:translate-x-1 transform"
+            >
+              {item.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   </div>
-</div>
-                  <ListItem
-                    href="/hearing-health/tinnitus"
-                    title={<EditableText contentKey="nav.tinnitusTitle" defaultValue="Tinnitus" as="span" />}
-                    icon={
-                      <Activity className="h-5 w-5 text-accent transition-transform duration-300 group-hover:scale-110" />
-                    }
-                  >
-                    <EditableText contentKey="nav.tinnitusDesc" defaultValue="Managing ringing in the ears" as="span" />
-                  </ListItem>
+
+  <div className="flex flex-col">
+    <button
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setTinnitusOpen(!tinnitusOpen); // Uses the specific tinnitus state
+      }}
+      className="group flex w-full select-none items-start gap-3 rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
+    >
+      {/* BellRing is a great icon for Tinnitus (ringing in the ears) */}
+      <BellRing className="h-5 w-5 text-secondary transition-transform duration-300 group-hover:scale-110" />
+      <div className="flex flex-1 flex-col text-left">
+        <div className="flex items-center justify-between">
+          <span className="text-sm font-medium leading-none">
+            <EditableText contentKey="nav.tinnitusTitle" defaultValue="Tinnitus" as="span" />
+          </span>
+          <ChevronDown 
+            className={`h-4 w-4 text-muted-foreground transition-transform duration-300 ${
+              tinnitusOpen ? "rotate-180" : ""
+            }`} 
+          />
+        </div>
+        <p className="mt-1 text-sm leading-snug text-muted-foreground">
+          <EditableText contentKey="nav.tinnitusDesc" defaultValue="Symptoms and relief therapy" as="span" />
+        </p>
+      </div>
+    </button>
+
+    {/* Animated Sub-links Area */}
+    <div
+      className={`overflow-hidden transition-all duration-300 ease-in-out ${
+        tinnitusOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+      }`}
+    >
+      <ul className="ml-9 mt-1 flex flex-col gap-1 border-l-2 border-secondary/20 pl-4">
+        {[
+          { href: "/hearing-health/tinnitus/symptoms-causes", label: "Symptoms and causes" },
+          { href: "/hearing-health/tinnitus/tinnitus-therapy", label: "Tinnitus therapy" },
+        ].map((item, index) => (
+          <li key={index}>
+            <Link
+              href={item.href}
+              className="block py-2 text-sm text-muted-foreground transition-colors duration-200 hover:text-secondary hover:translate-x-1 transform"
+            >
+              {item.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+
+
+  
+                    <ListItem
+                      href="/hearing-health/tinnitus"
+                      title={<EditableText contentKey="nav.tinnitusTitle" defaultValue="Understanding Hearing Test" as="span" />}
+                      icon={
+                        <Activity className="h-5 w-5 text-accent transition-transform duration-300 group-hover:scale-110" />
+                      }
+                    >
+                      <EditableText contentKey="nav.tinnitusDesc" defaultValue="Managing ringing in the ears" as="span" />
+                    </ListItem>
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
@@ -509,68 +566,176 @@ export function MainNavigation() {
                             </span>
                           </Link>
                           <div className="flex flex-col">
-  <button
-    onClick={(e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      setHearingLossOpen(!hearingLossOpen);
-    }}
-    className="group flex w-full select-none items-start gap-3 rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
-  >
-                                <div className="h-2 w-2 rounded-full bg-primary group-hover:scale-150 transition-transform" />
-
-     <div className="flex flex-1 flex-col text-left">
-      <div className="flex items-center justify-between">
-        <span className="text-sm font-medium leading-none">
-          <EditableText contentKey="nav.hearingLossTitle" defaultValue="Hearing Loss" as="span" />
-        </span>
-        <ChevronDown 
-          className={`h-4 w-4 text-muted-foreground transition-transform duration-300 ${
-            hearingLossOpen ? "rotate-180" : ""
-          }`} 
-        />
+    <button
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setHearingLossOpen(!hearingLossOpen);
+      }}
+      className="group flex w-full select-none items-start gap-3 rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
+    >
+                            <div className="h-2 w-2 rounded-full bg-primary group-hover:scale-150 transition-transform" />
+                            <div className="flex flex-1 flex-col text-left">
+        <div className="flex items-center justify-between">
+          <span className="text-sm font-medium leading-none">
+            <EditableText contentKey="nav.hearingLossTitle" defaultValue="Hearing Loss" as="span" />
+          </span>
+          <ChevronDown 
+            className={`h-4 w-4 text-muted-foreground transition-transform duration-300 ${
+              hearingLossOpen ? "rotate-180" : ""
+            }`} 
+          />
+        </div>
+        <p className="mt-1 text-sm leading-snug text-muted-foreground">
+          <EditableText contentKey="nav.hearingLossDesc" defaultValue="Types, causes, and signs" as="span" />
+        </p>
       </div>
-    
-    </div>
-  </button>
+    </button>
 
-  {/* Animated Sub-links Area */}
-  <div
-    className={`overflow-hidden transition-all duration-300 ease-in-out ${
-      hearingLossOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
-    }`}
-  >
-    <ul className="ml-9 mt-1 flex flex-col gap-1 border-l-2 border-secondary/20 pl-4">
-      {[
-        { href: "/hearing-health/hearing-loss/signs-of-hearing-loss", label: "Signs of hearing loss" },
-        { href: "/hearing-health/hearing-loss/causes-of-hearing-loss", label: "Causes of hearing loss" },
-        { href: "/hearing-health/hearing-loss/types-of-hearing-loss", label: "Types of hearing loss" },
-        { href: "/hearing-health/hearing-loss/hearing-loss-in-adults", label: "Hearing loss in adults" },
-        { href: "/hearing-health/hearing-loss/hearing-loss-in-child", label: "Hearing loss in Child" },
-      ].map((item, index) => (
-        <li key={index}>
-          <Link
-            href={item.href}
-            className="block py-2 text-sm text-muted-foreground transition-colors duration-200 hover:text-secondary hover:translate-x-1 transform"
-          >
-            {item.label}
-          </Link>
-        </li>
-      ))}
-    </ul>
+    {/* Animated Sub-links Area */}
+    <div
+      className={`overflow-hidden transition-all duration-300 ease-in-out ${
+        hearingLossOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
+      }`}
+    >
+      <ul className="ml-9 mt-1 flex flex-col gap-1 border-l-2 border-secondary/20 pl-4">
+        {[
+          { href: "/hearing-health/hearing-loss/signs-of-hearing-loss", label: "Signs of hearing loss" },
+          { href: "/hearing-health/hearing-loss/causes-of-hearing-loss", label: "Causes of hearing loss" },
+          { href: "/hearing-health/hearing-loss/types-of-hearing-loss", label: "Types of hearing loss" },
+          { href: "/hearing-health/hearing-loss/hearing-loss-in-adults", label: "Hearing loss in adults" },
+          { href: "/hearing-health/hearing-loss/hearing-loss-in-child", label: "Hearing loss in Child" },
+        ].map((item, index) => (
+          <li key={index}>
+            <Link
+              href={item.href}
+              className="block py-2 text-sm text-muted-foreground transition-colors duration-200 hover:text-secondary hover:translate-x-1 transform"
+            >
+              {item.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   </div>
-</div>
-                          <Link
-                            href="/hearing-health/tinnitus"
-                            onClick={() => setIsOpen(false)}
-                            className="flex items-center gap-3 p-3 rounded-lg hover:bg-accent/20 transition-all duration-200 group"
-                          >
-                            <div className="h-2 w-2 rounded-full bg-accent group-hover:scale-150 transition-transform" />
-                            <span className="text-sm">Tinnitus</span>
-                          </Link>
+
+
+  <div className="flex flex-col">
+    <button
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setTinnitusOpen(!tinnitusOpen); // Uses the specific tinnitus state
+      }}
+      className="group flex w-full select-none items-start gap-3 rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
+    >
+      {/* BellRing is a great icon for Tinnitus (ringing in the ears) */}
+      <div className="h-2 w-2 rounded-full bg-primary group-hover:scale-150 transition-transform" />
+
+      <div className="flex flex-1 flex-col text-left">
+        <div className="flex items-center justify-between">
+          <span className="text-sm font-medium leading-none">
+            <EditableText contentKey="nav.tinnitusTitle" defaultValue="Tinnitus" as="span" />
+          </span>
+          <ChevronDown 
+            className={`h-4 w-4 text-muted-foreground transition-transform duration-300 ${
+              tinnitusOpen ? "rotate-180" : ""
+            }`} 
+          />
+        </div>
+        <p className="mt-1 text-sm leading-snug text-muted-foreground">
+          <EditableText contentKey="nav.tinnitusDesc" defaultValue="Symptoms and relief therapy" as="span" />
+        </p>
+      </div>
+    </button>
+
+    {/* Animated Sub-links Area */}
+    <div
+      className={`overflow-hidden transition-all duration-300 ease-in-out ${
+        tinnitusOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+      }`}
+    >
+      <ul className="ml-9 mt-1 flex flex-col gap-1 border-l-2 border-secondary/20 pl-4">
+        {[
+          { href: "/hearing-health/tinnitus/symptoms-causes", label: "Symptoms and causes" },
+          { href: "/hearing-health/tinnitus/tinnitus-therapy", label: "Tinnitus therapy" },
+        ].map((item, index) => (
+          <li key={index}>
+            <Link
+              href={item.href}
+              className="block py-2 text-sm text-muted-foreground transition-colors duration-200 hover:text-secondary hover:translate-x-1 transform"
+            >
+              {item.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+
+
+  <div className="flex flex-col">
+    <button
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setTinnitusOpen(!tinnitusOpen); // Uses the specific tinnitus state
+      }}
+      className="group flex w-full select-none items-start gap-3 rounded-md p-3 leading-none no-underline outline-none transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
+    >
+      {/* BellRing is a great icon for Tinnitus (ringing in the ears) */}
+      <div className="h-2 w-2 rounded-full bg-primary group-hover:scale-150 transition-transform" />
+      <div className="flex flex-1 flex-col text-left">
+        <div className="flex items-center justify-between">
+          <span className="text-sm font-medium leading-none">
+            <EditableText contentKey="nav.tinnitusTitle" defaultValue="ْUnderStanding Hearing Testing" as="span" />
+          </span>
+          <ChevronDown 
+            className={`h-4 w-4 text-muted-foreground transition-transform duration-300 ${
+              tinnitusOpen ? "rotate-180" : ""
+            }`} 
+          />
+        </div>
+        <p className="mt-1 text-sm leading-snug text-muted-foreground">
+          <EditableText contentKey="nav.tinnitusDesc" defaultValue="" as="span" />
+        </p>
+      </div>
+    </button>
+
+    {/* Animated Sub-links Area */}
+    <div
+      className={`overflow-hidden transition-all duration-300 ease-in-out ${
+        tinnitusOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+      }`}
+    >
+      <ul className="ml-9 mt-1 flex flex-col gap-1 border-l-2 border-secondary/20 pl-4">
+        {[
+          { href: "/hearing-health/tinnitus/", label: "UnderStanding Hearing Testing" },
+        ].map((item, index) => (
+          <li key={index}>
+            <Link
+              href={item.href}
+              className="block py-2 text-sm text-muted-foreground transition-colors duration-200 hover:text-secondary hover:translate-x-1 transform"
+            >
+              {item.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+ 
+                          
                         </div>
+                        
                       </div>
                     </div>
+
+
+
+
 
                {/* Products Section */}
 <div className="rounded-xl border border-border/50 overflow-hidden bg-card/50 backdrop-blur-sm">

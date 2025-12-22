@@ -176,6 +176,18 @@
       "namedRegex": "^/hearing\\-health/tinnitus(?:/)?$"
     },
     {
+      "page": "/hearing-health/tinnitus/symptoms-causes",
+      "regex": "^/hearing\\-health/tinnitus/symptoms\\-causes(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/hearing\\-health/tinnitus/symptoms\\-causes(?:/)?$"
+    },
+    {
+      "page": "/hearing-health/tinnitus/tinnitus-therapy",
+      "regex": "^/hearing\\-health/tinnitus/tinnitus\\-therapy(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/hearing\\-health/tinnitus/tinnitus\\-therapy(?:/)?$"
+    },
+    {
       "page": "/hearing-test",
       "regex": "^/hearing\\-test(?:/)?$",
       "routeKeys": {},

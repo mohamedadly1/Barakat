@@ -22,6 +22,8 @@
   "/hearing-health/page": "app/hearing-health/page.js",
   "/hearing-health/prevention/page": "app/hearing-health/prevention/page.js",
   "/hearing-health/tinnitus/page": "app/hearing-health/tinnitus/page.js",
+  "/hearing-health/tinnitus/symptoms-causes/page": "app/hearing-health/tinnitus/symptoms-causes/page.js",
+  "/hearing-health/tinnitus/tinnitus-therapy/page": "app/hearing-health/tinnitus/tinnitus-therapy/page.js",
   "/hearing-test/page": "app/hearing-test/page.js",
   "/page": "app/page.js",
   "/products/[id]/page": "app/products/[id]/page.js",
