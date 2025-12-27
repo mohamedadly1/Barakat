@@ -1,4 +1,4 @@
-"use client"
+ "use client"
 
 import { MainNavigation } from "@/components/main-navigation"
 import { Button } from "@/components/ui/button"
@@ -26,84 +26,93 @@ export default function HowWeHearPage() {
       <section className="pb-16 md:pb-24">
         <div className="container mx-auto max-w-7xl px-4">
           <div className="mx-auto max-w-4xl space-y-12">
-            
-            {/* Overview Statement */}
+
+            {/* Overview */}
             <div className="text-center md:text-left border-l-4 border-primary pl-6 py-2">
               <p className="text-lg leading-relaxed text-foreground/80 font-medium">
-                Your ear is a finely tuned organ that transforms sound waves into information your brain can understand. 
-                This process happens in a fraction of a second and involves three main parts: 
-                the outer ear, the middle ear, and the inner ear.
+                Your ear is a finely tuned organ that transforms sound waves into information your brain can understand.
+                This process happens in a fraction of a second and involves three main parts: the outer ear, the middle ear,
+                and the inner ear.
               </p>
             </div>
 
-            {/* Step-by-Step Sections */}
+            {/* Sections */}
             <div className="grid gap-8">
-              
-              {/* 1. The Outer Ear */}
+
+              {/* Outer Ear */}
               <Card className="overflow-hidden border-none shadow-md">
                 <CardContent className="p-8 md:p-10">
-                  <h2 className="text-2xl font-bold mb-4 text-primary">1. The Outer Ear – Collecting Sound</h2>
+                  <h2 className="text-2xl font-bold mb-4 text-primary">
+                    1. The Outer Ear – Collecting Sound
+                  </h2>
                   <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
                     <p>
-                      The <strong>pinna</strong> (the visible part of your ear) gathers sound waves and funnels them through 
-                      the <strong>ear canal</strong> to the <strong>eardrum (tympanic membrane)</strong>.
+                      The <strong>pinna</strong> (the visible part of your ear) gathers sound waves and funnels them through
+                      the <strong> ear canal</strong> to the <strong>eardrum (tympanic membrane)</strong>.
                     </p>
                     <p>
-                      When sound waves strike the eardrum, they cause it to vibrate. These vibrations carry 
-                      the pitch and volume information of the sound.
+                      When sound waves strike the eardrum, they cause it to vibrate. These vibrations carry the pitch and
+                      volume information of the sound.
                     </p>
                   </div>
                 </CardContent>
               </Card>
 
-              {/* 2. The Middle Ear */}
+              {/* Middle Ear */}
               <Card className="overflow-hidden border-none shadow-md">
                 <CardContent className="p-8 md:p-10">
-                  <h2 className="text-2xl font-bold mb-4 text-primary">2. The Middle Ear – Amplifying Sound</h2>
+                  <h2 className="text-2xl font-bold mb-4 text-primary">
+                    2. The Middle Ear – Amplifying Sound
+                  </h2>
                   <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
-                    <p>Behind the eardrum lie three delicate bones known as the <strong>ossicles</strong>:</p>
+                    <p>
+                      Behind the eardrum lie three delicate bones known as the <strong>ossicles</strong>:
+                    </p>
                     <ul className="list-disc list-inside pl-4 space-y-1 text-foreground font-medium">
                       <li>Malleus (hammer)</li>
                       <li>Incus (anvil)</li>
                       <li>Stapes (stirrup)</li>
                     </ul>
                     <p>
-                      These bones amplify the vibrations and transmit them to the <strong>oval window</strong>, 
-                      a membrane that connects to the inner ear. The middle ear also contains 
-                      the <strong>Eustachian tube</strong>, which balances air pressure between the ear 
-                      and the environment — essential for clear hearing.
+                      These bones amplify the vibrations and transmit them to the <strong>oval window</strong>, a membrane
+                      that connects to the inner ear. The middle ear also contains the <strong>Eustachian tube</strong>,
+                      which balances air pressure between the ear and the environment — essential for clear hearing.
                     </p>
                   </div>
                 </CardContent>
               </Card>
 
-              {/* 3. The Inner Ear */}
+              {/* Inner Ear */}
               <Card className="overflow-hidden border-none shadow-md">
                 <CardContent className="p-8 md:p-10">
-                  <h2 className="text-2xl font-bold mb-4 text-primary">3. The Inner Ear – Converting Vibration into Signals</h2>
+                  <h2 className="text-2xl font-bold mb-4 text-primary">
+                    3. The Inner Ear – Converting Vibration into Signals
+                  </h2>
                   <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
                     <p>
-                      Inside the <strong>cochlea</strong>, a fluid-filled spiral structure, thousands of microscopic 
-                      <strong> hair cells</strong> convert mechanical vibrations into <strong>electrical nerve impulses</strong>. 
-                      These signals travel via the <strong>auditory nerve</strong> to the brain’s hearing center 
+                      Inside the <strong>cochlea</strong>, a fluid-filled spiral structure, thousands of microscopic
+                      <strong> hair cells</strong> convert mechanical vibrations into <strong>electrical nerve impulses</strong>.
+                      These signals travel via the <strong>auditory nerve</strong> to the brain’s hearing center
                       (auditory cortex), where they’re interpreted as recognizable sounds — speech, music, or ambient noise.
                     </p>
                   </div>
                 </CardContent>
               </Card>
 
-              {/* 4. The Brain */}
+              {/* Brain */}
               <Card className="overflow-hidden border-none shadow-md">
                 <CardContent className="p-8 md:p-10">
-                  <h2 className="text-2xl font-bold mb-4 text-primary">4. The Brain – Making Sense of Sound</h2>
+                  <h2 className="text-2xl font-bold mb-4 text-primary">
+                    4. The Brain – Making Sense of Sound
+                  </h2>
                   <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
                     <p>
-                      Your brain not only decodes sound but also determines its <strong>direction</strong>, 
+                      Your brain not only decodes sound but also determines its <strong>direction</strong>,
                       <strong> distance</strong>, and <strong>meaning</strong>.
                     </p>
                     <p className="font-medium text-foreground bg-primary/5 p-4 rounded-lg italic">
-                      This coordination between the ears and brain is why even a small hearing imbalance 
-                      can affect communication and quality of life.
+                      This coordination between the ears and brain is why even a small hearing imbalance can affect
+                      communication and quality of life.
                     </p>
                   </div>
                 </CardContent>
@@ -111,21 +120,24 @@ export default function HowWeHearPage() {
 
             </div>
 
-            {/* Regional Commitment Footer */}
+            {/* Regional Message */}
             <div className="pt-8 text-center">
               <p className="text-xl font-semibold text-primary/80">
-                Our audiologists in all regions of Kingdom Saudi Arabia are here to help you every step 
+                Our audiologists in all regions of Kingdom Saudi Arabia are here to help you every step
                 of the way to understanding your hearing.
               </p>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA */}
       <section className="bg-muted/50 py-16">
         <div className="container mx-auto max-w-7xl px-4 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-foreground">Test Your Hearing</h2>
+          <h2 className="mb-4 text-3xl font-bold text-foreground">
+            Test Your Hearing
+          </h2>
           <p className="mb-8 text-lg text-muted-foreground">
             Ready to take the first step? Try our quick online hearing test today.
           </p>
