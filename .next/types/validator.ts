@@ -137,6 +137,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../app/hearing-health/hearing-loss/hearing-aid-categories/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/hearing-health/hearing-loss/hearing-aid-categories">> = Specific
+  const handler = {} as typeof import("../../app/hearing-health/hearing-loss/hearing-aid-categories/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../app/hearing-health/hearing-loss/hearing-loss-in-adults/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/hearing-health/hearing-loss/hearing-loss-in-adults">> = Specific

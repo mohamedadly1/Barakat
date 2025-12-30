@@ -13,6 +13,7 @@
   "/contact/page": "app/contact/page.js",
   "/faq/page": "app/faq/page.js",
   "/hearing-health/hearing-loss/causes-of-hearing-loss/page": "app/hearing-health/hearing-loss/causes-of-hearing-loss/page.js",
+  "/hearing-health/hearing-loss/hearing-aid-categories/page": "app/hearing-health/hearing-loss/hearing-aid-categories/page.js",
   "/hearing-health/hearing-loss/hearing-loss-in-adults/page": "app/hearing-health/hearing-loss/hearing-loss-in-adults/page.js",
   "/hearing-health/hearing-loss/hearing-loss-in-child/page": "app/hearing-health/hearing-loss/hearing-loss-in-child/page.js",
   "/hearing-health/hearing-loss/page": "app/hearing-health/hearing-loss/page.js",

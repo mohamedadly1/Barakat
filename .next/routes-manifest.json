@@ -134,6 +134,12 @@
       "namedRegex": "^/hearing\\-health/hearing\\-loss/causes\\-of\\-hearing\\-loss(?:/)?$"
     },
     {
+      "page": "/hearing-health/hearing-loss/hearing-aid-categories",
+      "regex": "^/hearing\\-health/hearing\\-loss/hearing\\-aid\\-categories(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/hearing\\-health/hearing\\-loss/hearing\\-aid\\-categories(?:/)?$"
+    },
+    {
       "page": "/hearing-health/hearing-loss/hearing-loss-in-adults",
       "regex": "^/hearing\\-health/hearing\\-loss/hearing\\-loss\\-in\\-adults(?:/)?$",
       "routeKeys": {},
