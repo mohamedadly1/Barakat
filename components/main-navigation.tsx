@@ -739,21 +739,21 @@ export function MainNavigation() {
 
                {/* Products Section */}
 <div className="rounded-xl border border-border/50 overflow-hidden bg-card/50 backdrop-blur-sm">
-  <button
-    onClick={(e) => toggleMain("products-menu", e)}
-    className="w-full flex items-center justify-between p-4 hover:bg-accent/10 transition-colors"
-  >
-    <div className="flex items-center gap-3">
-      <Ear className="h-5 w-5 text-secondary" />
-      <span className="font-semibold">Products & Accessories</span>
-    </div>
-    <ChevronRight
-      className={cn(
-        "h-5 w-5 text-muted-foreground transition-transform duration-300",
-        expandedMain === "products-menu" && "rotate-90"
-      )}
-    />
-  </button>
+    <button
+      onClick={(e) => toggleMain("products-menu", e)}
+      className="w-full flex items-center justify-between p-4 hover:bg-accent/10 transition-colors"
+    >
+      <div className="flex items-center gap-3">
+        <Ear className="h-5 w-5 text-secondary" />
+        <span className="font-semibold">Products & Accessories</span>
+      </div>
+      <ChevronRight
+        className={cn(
+          "h-5 w-5 text-muted-foreground transition-transform duration-300",
+          expandedMain === "products-menu" && "rotate-90"
+        )}
+      />
+    </button>
 
   <div
     className={cn(

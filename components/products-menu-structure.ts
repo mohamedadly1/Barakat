@@ -5,7 +5,7 @@ export const productsMenuStructure = {
       id: "hearing-aid-category",
       label: "Hearing Aid Category",
       icon: "Grid3x3",
-      href: "/products/category",
+      href: "/hearing-health/hearing-loss/hearing-aid-categories",
     },
     {
       id: "hearing-aid-brands",
